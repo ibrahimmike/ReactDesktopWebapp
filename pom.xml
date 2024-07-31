@@ -13,7 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.testng.version>7.10.2</org.testng.version>
-        <org.selenium.version>4.20.0</org.selenium.version>
+        <org.selenium.version>4.21.0</org.selenium.version>
         <org.webdriverManager.version>5.8.0</org.webdriverManager.version>
     </properties>
     <dependencies>
@@ -23,6 +23,7 @@
             <artifactId>selenium-java</artifactId>
             <version>${org.selenium.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.testng</groupId>
@@ -36,8 +37,22 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${org.webdriverManager.version}</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
 
 
     </dependencies>

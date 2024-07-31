@@ -1,4 +1,4 @@
-package utils;
+package cityfalcon.utils;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -22,15 +22,15 @@ public class ReadDefaultProperties {
     }
 
     private static  Properties  readPropertiesFiles(){
-     Properties   properties = new Properties();
-      input =  ReadDefaultProperties.class.getClassLoader().getResourceAsStream(propertiesPath);
+   props = new Properties();
+      input = ReadDefaultProperties.class.getClassLoader().getResourceAsStream(propertiesPath);
 
         try {
-            properties.load(input);
+            props.load(input);
         }catch(Exception e){
             throw new RuntimeException("The properties path was not found");
         }
-        return properties;
+        return props;
     }
 
 }

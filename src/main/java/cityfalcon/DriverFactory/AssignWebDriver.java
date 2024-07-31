@@ -1,12 +1,12 @@
-package DriverFactory;
+package cityfalcon.DriverFactory;
 
-import utils.ReadDefaultProperties;
+import cityfalcon.utils.ReadDefaultProperties;
 import org.openqa.selenium.WebDriver;
 
 
 public class AssignWebDriver {
 
-    public static WebDriver getWebDriver(){
+    public static WebDriver   getWebDriver(){
 
 
         if (ReadDefaultProperties.getPropertyValue("browser").equalsIgnoreCase("chrome")){

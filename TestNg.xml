@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="cityfalcon" thread-count="4" parallel="methods"  >
+    <listeners>
+        <listener class-name="listeners.Listener"/>
+
+    </listeners>
+    <test name="Login and logout"   >
+<!--        <classes >-->
+<!--            <class name="tests.GuestUserHomePageSideBarTest" />-->
+<!--        </classes>-->
+        <classes>
+            <class name="tests.GuestUserCheckingContent"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,12 +1,13 @@
-package DriverFactory;
+package cityfalcon.DriverFactory;
 
+import cityfalcon.utils.ReadDefaultProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import utils.ReadDefaultProperties;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,10 +31,10 @@ public class Chrome {
             }
         }else{
             ChromeOptions options = new ChromeOptions();
-//            options.addArguments("--disable-notifications");
-//            options.addArguments("--start-maximized");
-//            options.addArguments("--disable-features=EnableEphemeralFlashPermission");
-//            options.addArguments("--disable-infobars");
+            options.addArguments("--disable-notifications");
+            options.addArguments("--start-maximized");
+            options.addArguments("--disable-features=EnableEphemeralFlashPermission");
+            options.addArguments("--disable-infobars");
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(options);
         }
