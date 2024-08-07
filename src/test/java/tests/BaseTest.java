@@ -10,16 +10,17 @@ import cityfalcon.utils.ReadDefaultProperties;
 public class BaseTest {
 
     WebDriver driver;
- //   HomePage hp;
 
-    @BeforeMethod
+    public HomePage hp ;
+
+    @BeforeClass
     public void setWebDriver(){
 
-        driver = Driver.initDriver();
+       driver = Driver.initDriver();
 
-      //   hp = new HomePage(driver);
+        hp = new HomePage(driver);
 
-        System.out.println(ReadDefaultProperties.getPropertyValue("browser"));
+     //   System.out.println(ReadDefaultProperties.getPropertyValue("browser"));
 
     }
 //    @Test
@@ -40,8 +41,8 @@ public class BaseTest {
 //        driver.close();
 //        Driver.removeWebDriver();
 //    }
-   // @AfterMethod
-   // public void afterMethod(){
+//    @AfterClass
+//    public void afterMethod(){
 //       Driver.removeWebDriver();
 //    }
 }

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Driver {
 
-  // private static WebDriver driver;
+
     public static WebDriver initDriver(){
         if (Objects.isNull(DriverManager.getDriver())){
             try {
@@ -27,8 +27,11 @@ public class Driver {
 
     }
     public static void removeWebDriver(){
-//        driver.quit();
+
+//        DriverManager.getDriver().quit();
 //        DriverManager.clearDrivers();
+
+
         if (Objects.nonNull(DriverManager.getDriver())) {
             DriverManager.getDriver().quit();
             DriverManager.clearDrivers();

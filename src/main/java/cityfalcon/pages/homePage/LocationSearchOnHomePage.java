@@ -18,7 +18,9 @@ public class LocationSearchOnHomePage extends HomePage{
     public LocationSearchOnHomePage(WebDriver driver) {
         super(driver);
         //WebElement listOfTheLocations = driver.findElement(By.xpath("//div[contains(@class, 'location-filter-content')]"));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'location-filter-content')]")));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class, '__location-filter-item___')]")));
+        ////div[contains(@class, '__location-filter-item___')]
+        //location-filter-content
     }
 
     private void clickOnChoice(String choice){
@@ -73,8 +75,12 @@ public class LocationSearchOnHomePage extends HomePage{
         clickOnWebElement(languageBtn);
         WebElement listWrapper = driver.findElement(By.xpath("//div[contains(@class, '__language-filter-wrapper__')]"));
         WebElement searchBox = listWrapper.findElement(By.xpath("//div[contains(@class, '__input-container__')]//input[@type='text']"));
+        ////div[contains(@class, '__language-filter-wrapper__')]
         wait.until(ExpectedConditions.visibilityOf(searchBox));
         typeOnWebElement(searchBox,"ger");
+
+//        String chosenLanguageInTheSearch = listWrapper.findElement(By.xpath("//div[contains(@class,'__menu-item__container___')]//span[contains(@class,'__dropdown__checkbox_title___')][1]")).getText();
+//        System.out.println("The last language in the list of languages is : " +chosenLanguageInTheSearch);
         ////div[contains(@class, '__language-filter-wrapper__')]//div[contains(@class, '__input-container__')]//input[@type='text']
 
         return new HomePage(driver);

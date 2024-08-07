@@ -1,14 +1,40 @@
 package tests;
 
 import cityfalcon.pages.homePage.HomePage;
+import org.apache.hc.core5.util.Asserts;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GuestUserCheckingContent extends BaseTest{
     @Test (priority = 1)
     public void guestUserHomePageSearchBarSearch(){
-        HomePage hp = new HomePage(driver);
-        hp.clickOnSearch().makeASearchAndCheckSearchResult("Oil").clickOnTheSearchBtn();
-        Assert.assertTrue(true);
+
+        hp.clickOnSearch().makeASearchAndCheckSearchResult("Oil").clickOnTheSearchBtn().clickOnTheHeaderCFLogoAndReturnToHomePage();
+
+
     }
+    @Test (priority = 2)
+    public void guestUserClickingOnTheHomePageSlider(){
+        hp.userClicksOnDifferentOptionsOnTheSlideShow();
+    }
+    @Test(priority = 3 )
+    public void geoLocationsFilterOnHomPage(){
+        hp.clickOnLocationFilters().chooseAContinentAndGetRegions("Europe").clickOnBackFromTheSubLists().chooseLocation("Antarctica").clickOnLanguage();
+    }
+    @Test(priority = 4)
+    public void guestUserLocationsSentimentAnalysis(){
+        hp.clickOnSentimentsMap().changeTheSentimentFilterFromAllShouldShowUpgradeMessage().clickBackToHomePage();
+
+    }
+    //"ependsOnMethods = "guestUserLocationsSentimentAnalysis"
+    @Test(priority = 5)
+    public void guestUserContinuesToCheckTheHomPageInvestorRelations(){
+      hp.checkTheInvestorRelationsBoxIsVisible().clickOnTheEarningsAndCheckIfTheCategoriesAreChanging().checkTheESGCategoriesSearchIsWorking().checkFiltersOfTheEsgContainers();
+    }
+    @Test(priority = 6)
+    public void gainersAndLosersTest(){
+        hp.gainersAndLosersSection().titlesAreVisible().stocksAndCryptosFunctionalities();
+    }
+
+
 }

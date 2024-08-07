@@ -6,12 +6,12 @@
 
     </listeners>
     <test name="Login and logout"   >
-<!--        <classes >-->
-<!--            <class name="tests.GuestUserHomePageSideBarTest" />-->
-<!--        </classes>-->
+        <!--        <classes >-->
+        <!--            <class name="tests.GuestUserHomePageSideBarTest" />-->
+        <!--        </classes>-->
         <classes>
-<!--            <class name="tests.GuestUserCheckingContent"/>-->
-<!--        <class name="tests.GuestUserHomePageSideBarTest"></class>-->
+            <!--            <class name="tests.GuestUserCheckingContent"/>-->
+            <!--        <class name="tests.GuestUserHomePageSideBarTest"></class>-->
             <class name="tests.GuestUserOnBoarding"/>
 
         </classes>

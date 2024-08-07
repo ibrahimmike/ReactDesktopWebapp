@@ -51,7 +51,7 @@ public class ExtentReport{
             date = new Date();
             return "reports/" + date.toString()+".html";
         }
-        return "reports";
+        return "reports/";
     }
 
 

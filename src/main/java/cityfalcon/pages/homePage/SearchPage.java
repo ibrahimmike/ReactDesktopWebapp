@@ -2,6 +2,7 @@ package cityfalcon.pages.homePage;
 
 import cityfalcon.extentLoger.ExtentLogger;
 import cityfalcon.pages.BasePage;
+import cityfalcon.pages.HeaderPage;
 import cityfalcon.pages.topicsAndAssetClassesPages.CommodityPage;
 import io.github.bonigarcia.wdm.webdriver.WebDriverBrowser;
 import org.apache.commons.io.input.CharSequenceReader;
@@ -21,12 +22,12 @@ public class SearchPage extends BasePage {
 
 
 
-    private final WebElement basicSearchTab = driver.findElement(By.xpath("//div[text()='Basic Search']"));
-    private final WebElement advancedSearch = driver.findElement(By.xpath("//div[text()='Advanced Search']"));
-    private final WebElement cancelBtn = driver.findElement(By.xpath("//div[text()='CANCEL']"));
-    private final WebElement searchBar = driver.findElement(By.xpath("//div//section[@data-component='SearchbarInput']//input[@placeholder='']"));
-    private final List<WebElement> menuItems = driver.findElements(By.xpath("//div[@class='menu-wrapper--inner']//div[@class='menu-item-wrapper ']"));
-    private final WebElement searchBtn = driver.findElement(By.xpath("//span[contains(text(), 'Search')]"));
+    private  WebElement basicSearchTab = driver.findElement(By.xpath("//div[text()='Basic Search']"));
+    private  WebElement advancedSearch = driver.findElement(By.xpath("//div[text()='Advanced Search']"));
+    private  WebElement cancelBtn = driver.findElement(By.xpath("//div[text()='CANCEL']"));
+    private  WebElement searchBar = driver.findElement(By.xpath("//div//section[@data-component='SearchbarInput']//input[@placeholder='']"));
+    private  List<WebElement> menuItems = driver.findElements(By.xpath("//div[@class='menu-wrapper--inner']//div[@class='menu-item-wrapper ']"));
+
    // private  WebElement tabPanel = driver.findElement(By.xpath("//div[@role='tabpanel']//h3"));
     private   List< WebElement> listOfSearchResult = driver.
            findElements(By.xpath("//div[contains(@class, '__search_result_name__')]//span[contains(@class, 'module__name__')]"));
@@ -34,7 +35,7 @@ public class SearchPage extends BasePage {
 
     public SearchPage(WebDriver driver) {
         super(driver);
-        wait.until(ExpectedConditions.visibilityOf(searchBtn));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'__search_dropdown___')]")));
     }
 
     public SearchPage clickOnAdvancedSearch(){
@@ -69,9 +70,23 @@ public class SearchPage extends BasePage {
         return this;
     }
     public CommodityPage clickOnTheSearchBtn(){
+        WebElement searchBtn = driver.findElement(By.xpath("//span[contains(text(), 'Search')]"));
         clickOnWebElement(searchBtn);
+        ExtentLogger.log("Search button clicked");
         return new CommodityPage(driver);
     }
+    public SearchPage clickONSearchTopics(int numberOfTopicsToBeClicked){
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'__search_result_name___')]")));
+        List<WebElement> topicsForSearch = driver.findElements(By.xpath("//div[contains(@class,'__search_result_name___')]"));
+        for(int i= 0; i < numberOfTopicsToBeClicked; i++){
+            topicsForSearch.get(i).click();
+
+        }
+
+        return this;
+    }
+
+
 
 
 
