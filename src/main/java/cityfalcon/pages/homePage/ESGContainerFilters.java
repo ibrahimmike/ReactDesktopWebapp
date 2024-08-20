@@ -5,6 +5,7 @@ import cityfalcon.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
@@ -13,17 +14,20 @@ import java.util.List;
 import java.util.Map;
 
 public class ESGContainerFilters extends BasePage {
-
+    @FindBy(xpath = "//div[contains(@class,'__company-data-wrapper___')]//div[text()='Company ESG Reports']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]")
+    private WebElement esgContainer;
+    @FindBy(xpath = "//div[contains(@class,'__discovery-videos-slider-wrapper___')]")
+    private WebElement sliderWrapper;
 
     public ESGContainerFilters(WebDriver driver) {
         super(driver);
-      //  wait.until(ExpectedConditions.visibilityOf(esgContainer));
+       wait.until(ExpectedConditions.visibilityOf(esgContainer));
 
 
     }
     public HomePage checkFiltersOfTheEsgContainers(){
-        WebElement esgContainer = driver.findElement(By.xpath("//div[contains(@class,'__company-data-wrapper___')]//div[text()='Company ESG Reports']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]"));
-        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__discovery-videos-slider-wrapper___')]")));
+      //  WebElement esgContainer = driver.findElement(By.xpath(""));
+        scrollToView(sliderWrapper);
         waitForTime();
         List<WebElement> items = esgContainer.findElements(By.xpath("//div[contains(@class,'__items-scroll-bar___')]//div[@class='menu-item-wrapper ']"));
         Map<String, WebElement> clickableItems = new HashMap<>();

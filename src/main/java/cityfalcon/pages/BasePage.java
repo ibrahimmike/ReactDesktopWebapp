@@ -2,7 +2,9 @@ package cityfalcon.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,16 +15,21 @@ public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Robot robot;
-    protected boolean pageLoaded;
+   //protected boolean pageLoaded;
 
    // protected Actions actions;
     public BasePage(WebDriver driver){
         this.driver = driver;
+//       pageLoaded = new WebDriverWait(driver, Duration.ofSeconds(60)).until(
+//                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+
+
+        AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 60);
+        PageFactory.initElements(factory,this);
+        PageFactory.initElements(factory,this);
 
 
 
-       pageLoaded =  new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
       //  actions = new Actions(driver);
 
          wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -79,6 +86,15 @@ public class BasePage {
         Actions actions = new Actions(driver);
         actions.keyUp(element, Keys.UP);
 
+    }
+    protected void scrollActions(WebElement element, int amount){
+        Actions actions = new Actions(driver);
+    //    actions.scrollByAmount(200, amount).perform();
+     //   actions.moveByOffset(200, amount).perform();
+    //    actions.scrollByAmount(0, amount);
+
+        actions.scrollFromOrigin(WheelInput.ScrollOrigin.fromElement(element),0, amount);
+        actions.perform();
     }
 
 

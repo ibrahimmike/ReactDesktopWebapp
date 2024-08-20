@@ -5,8 +5,10 @@ import cityfalcon.extentLoger.ExtentReport;
 import cityfalcon.pages.BasePage;
 import com.aventstack.extentreports.util.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.HashMap;
@@ -17,17 +19,25 @@ public class GainersAndLosers extends BasePage {
 
 //    private List<WebElement> filtersBtns = driver.findElements(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
 //            "//ancestor::div[contains(@class,'__section-wrapper-container___')]//div[@class='menu-wrapper']//button"));
+    @FindBy(xpath = "//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]")
+    WebElement gainersAndLosersTitle;
+    @FindBy(xpath = "//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]//ancestor::div[contains(@class,'__section-wrapper-header___')]//ul//li")
+    List<WebElement> periodsList;
+    @FindBy(xpath="//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]//ancestor::div[contains(@class,'__section-wrapper-container___')]//div[@class='menu-wrapper']//button")
+    private List<WebElement> gainersAndLosersFiltersBtn;
+    @FindBy(xpath = "//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]//ancestor::div[contains(@class,'__section-wrapper-header___')]")
+    private WebElement scrollingToElement;
+    @FindBy(xpath = "//div[text()='Gainers']")
+    private WebElement gainersSectionTitle;
+
 
     public GainersAndLosers(WebDriver driver) {
         super(driver);
-        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]")));
+        scrollToView(gainersAndLosersTitle);
     }
 
     public GainersAndLosers titlesAreVisible(){
-        WebElement gainersAndLosersTitle = driver.findElement(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]"));
-       // WebElement aiPromoCloseBtn = driver.findElement(By.xpath("//div[contains(@class,'promobar ')]//div[contains(@class,'__banner___')]//div[contains(@class,'__banner__header___')]/*[local-name()=\"svg\"]"));
 
-      //  aiPromoCloseBtn.click();
         AiPromoBox promoBox = new AiPromoBox(driver);
         promoBox.clickOnCloseAiPromoBox();
 
@@ -37,7 +47,7 @@ public class GainersAndLosers extends BasePage {
             ExtentLogger.fail("The title IS NOT visible for the gainers and losers section");
         }
 
-        List<WebElement> periodsList = driver.findElements(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]//ancestor::div[contains(@class,'__section-wrapper-header___')]//ul//li"));
+     //   List<WebElement> periodsList = driver.findElements(By.xpath());
 
         if(periodsList.get(1).isDisplayed()){
             ExtentLogger.pass("The periods list is visible");
@@ -48,20 +58,22 @@ public class GainersAndLosers extends BasePage {
         return this;
     }
     public GainersAndLosers stocksAndCryptosFunctionalities(){
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
-                "//ancestor::div[contains(@class,'__section-wrapper-container___')]//div[@class='menu-wrapper']//button")));
+        wait.until(ExpectedConditions.visibilityOfAllElements(gainersSectionTitle));
 //        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
 //                "//ancestor::div[contains(@class,'__section-wrapper-header___')]")));
-        scrollUpToElement(driver.findElement(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]//ancestor::div[contains(@class,'__section-wrapper-header___')]//ancestor::section[contains(@class,'__section-wrapper___')]")));
+        scrollUpToElement(gainersSectionTitle);
         waitForTime();
-        List<WebElement> filtersBtns = driver.findElements(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
-                "//ancestor::div[contains(@class,'__section-wrapper-container___')]//div[@class='menu-wrapper']//button"));
+        scrollActions(gainersSectionTitle,-120);
 
 
-        try {
+//        List<WebElement> filtersBtns = driver.findElements(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
+//                "//ancestor::div[contains(@class,'__section-wrapper-container___')]//div[@class='menu-wrapper']//button"));
+
+
+
 
             Map<String, WebElement> buttons = new HashMap<>();
-            for (WebElement e : filtersBtns) {
+            for (WebElement e : gainersAndLosersFiltersBtn) {
                 buttons.put(e.getText(), e);
             }
             waitForTime();
@@ -71,12 +83,12 @@ public class GainersAndLosers extends BasePage {
             waitForTime();
             clickOnWebElement(buttons.get("Nano Cap"));
             waitForTime();
-            ExtentLogger.log("The user was able to click on crypto and to click on Mega Cap");
-        }catch(Exception e){
-            ExtentLogger.fail("The filters for the stocks and cap sizes did not update" + e.getMessage());
+//            ExtentLogger.log("The user was able to click on crypto and to click on Mega Cap");
+//
+//            ExtentLogger.fail("The filters for the stocks and cap sizes did not update" );
 
           //  throw new RuntimeException("The elements are not visible : "+ );
-        }
+
 
 
         return this;

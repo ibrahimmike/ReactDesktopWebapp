@@ -6,24 +6,35 @@ import cityfalcon.pages.homePage.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SentimentsLocationsPage extends BasePage {
+    @FindBy(xpath = "//div[contains(@class,'__filters-button-container___')]//button[@aria-label='refresh-button']")
+    private WebElement refreshBtn;
+    @FindBy(xpath = "//div[contains(@class,'__sentiment_levels_holder___')]")
+    private WebElement cartKey;
+    @FindBy(xpath = "//div[@data-component='StoryCard']")
+    private List<WebElement> newsCards;
+    @FindBy (xpath = "//div[contains(@class,'__sentiment_stories___')]/div[contains(@class,'__sentiment_stories_title___')]")
+    private WebElement topStoriesTitle;
+    @FindBy (xpath = "//div[@data-component='NavBar']//ul/li[2]")
+    private WebElement veryPositive;
     public SentimentsLocationsPage(WebDriver driver) {
         super(driver);
        // wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='js-plotly-plot']//g[@class='geolayer']//g[@class='layer bg']"))));
        // wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath()));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class,'__sentiment_levels_holder___')]")));
+        wait.until(ExpectedConditions.visibilityOf(cartKey));
     }
    // private List<WebElement> newsCards = driver.findElements(By.xpath("//div[@data-component='StoryCard']"));
 
     public SentimentsLocationsPage newsAreVisible(){
         waitForTime();
-        scrollUpToElement(driver.findElement(By.xpath("//div[contains(@class,'__filters-button-container___')]//button[@aria-label='refresh-button']")));
-        List<WebElement> newsCards = driver.findElements(By.xpath("//div[@data-component='StoryCard']"));
+        scrollUpToElement(refreshBtn);
+      //  List<WebElement> newsCards = driver.findElements(By.xpath("//div[@data-component='StoryCard']"));
         ArrayList<Boolean> visible = new  ArrayList<>();
         for (WebElement e : newsCards){
             if(e.isDisplayed()){
@@ -39,16 +50,16 @@ public class SentimentsLocationsPage extends BasePage {
         }
         return this;
     }
-    public SentimentsLocationsPage sentimentsAnalysisCard(){
-        WebElement sentimentCard = driver.findElement(By.xpath("//div[contains(@class,'__sentiment_analysis___')]"));
-        return this;
-    }
+//    public SentimentsLocationsPage sentimentsAnalysisCard(){
+//        WebElement sentimentCard = driver.findElement(By.xpath("//div[contains(@class,'__sentiment_analysis___')]"));
+//        return this;
+//    }
     public SentimentsLocationsPage changeTheSentimentFilterFromAllShouldShowUpgradeMessage(){
         waitForTime();
-        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__sentiment_stories___')]/div[contains(@class,'__sentiment_stories_title___')]")));
+        scrollToView(topStoriesTitle);
       //  WebElement veryHigh = driver.findElement(By.xpath("//div[@data-component='NavBar']//ul/li[2]"));
 
-        clickOnWebElement(driver.findElement(By.xpath("//div[@data-component='NavBar']//ul/li[2]")));
+        clickOnWebElement(veryPositive);
       //  wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[contains(@class,'__sentiment_upgrade___')]/a[@href='/pricing']"))));
         WebElement pricingLink = driver.findElement(By.xpath("//div[contains(@class,'__sentiment_upgrade___')]/a[@href='/pricing']"));
         waitForElementToBeVisible(pricingLink);

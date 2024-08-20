@@ -4,6 +4,7 @@ import cityfalcon.extentLoger.ExtentLogger;
 import cityfalcon.pages.BasePage;
 import cityfalcon.pages.locationsPage.SentimentsLocationsPage;
 import cityfalcon.pages.watchLists.CreateWatchListPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -22,98 +23,109 @@ public class HomePage extends BasePage {
 //    private final WebElement homePage =  driver.findElement(By.xpath("//div[contains(@class,'__home-page__')]"));
 
 
+    @FindBy(xpath = "//div[@data-component='GreetingSection']")
+    private  WebElement greetingsSection;
+
+    @FindBy(xpath = "//div/div/a[@href='/learn-more']")
+    private WebElement learnMore;
+
+    @FindBy(xpath = "//div[@data-component='GreetingSection']//div/a[text()='Personalise']")
+    private WebElement personaliseBtn;
+    @FindBy(xpath = "//div[@data-component='GreetingSection']//div/section[@data-component='SearchbarInput']")
+    private WebElement searchBar;
+    @FindBy(xpath = "//div/a[@href='/news/directory/cryptocurrencies/bitcoin-btc/news']")
+    private WebElement greetingsSectionBitcoinBtn;
+    @FindBy(xpath = "//div/a[@href='/news/directory/stocks/apple-inc-aapl/news']")
+    private WebElement greetingsSectionAppleStockBtn;
+    @FindBy(xpath = "//div/a[@href='/news/directory/commodities/oil/news']")
+    private WebElement greetingsSectionOilBtn;
+    @FindBy(xpath = "//div/a[@href='/news/directory/dcsc-sectors/level1/technology/news']" )
+    private WebElement greetingsTechnologySectionBtn;
+    @FindBy(xpath = "//div/a[@href='/news/directory/locations/country/united-states-of-america/news']")
+    private WebElement locationsAmerica;
 
 
-    private  WebElement greetingsSection = driver.findElement(By.xpath("//div[@data-component='GreetingSection']"));
-    private final WebElement learnMore = driver.findElement(By.xpath("//div/div/a[@href='/learn-more']"));
-    private  WebElement personaliseBtn = driver.findElement(By.xpath("//div[@data-component='GreetingSection']//div/a[text()='Personalise']"));
-    private final WebElement searchBar = driver.findElement(By.xpath("//div[@data-component='GreetingSection']//div/section[@data-component='SearchbarInput']"));
-    private final WebElement bitcoinBtn = greetingsSection.findElement(By.xpath("//div/a[@href='/news/directory/cryptocurrencies/bitcoin-btc/news']"));
-    private final WebElement appleStockBtn = greetingsSection.findElement(By.xpath("//div/a[@href='/news/directory/stocks/apple-inc-aapl/news']"));
-    private final WebElement oilCommodityBtn = greetingsSection.findElement(By.xpath("//div/a[@href='/news/directory/commodities/oil/news']"));
-    private final WebElement technologySectorBtn = greetingsSection.findElement(By.xpath("//div/a[@href='/news/directory/dcsc-sectors/level1/technology/news']"));
-    private final WebElement locationAmerica = greetingsSection.findElement(By.xpath("//div/a[@href='/news/directory/locations/country/united-states-of-america/news']"));
-    private final WebElement trustedByHeaderText = driver.findElement(By.xpath("//div/h2[text()='Trusted By']"));
-    private final WebElement trustedByParagraphText = driver.findElement(By.xpath("//div/p[text()='Financial institutions, financial companies, and 300k+ users']"));
-    private final WebElement etoroLogo = driver.findElement(By.xpath("//div/img[@alt='etoro']"));
-    private final WebElement bnpLogo = driver.findElement(By.xpath("//div/img[@alt='bnp']"));
-    private final WebElement iexLogo = driver.findElement(By.xpath("//div/img[@alt='iex']"));
-  //  private final WebElement sharesLogo = driver.findElement(By.xpath("//div/img[@alt='shares']"));
-    private final WebElement plumLogo = driver.findElement(By.xpath("//div/img[@alt='plum']"));
-    private final WebElement stoneXLogo = driver.findElement(By.xpath("//div/img[@alt='stonex']"));
-  //  private final WebElement fundRootsLogo = driver.findElement(By.xpath("//div/img[@alt='fundroots']"));
-    private final WebElement obrainLogo = driver.findElement(By.xpath("//div/img[@alt='obrain']"));
-    private final WebElement seedersLogo = driver.findElement(By.xpath("//div/img[@alt='seedrs']"));
+
+
+    //trusted section
+    @FindBy(xpath = "//div/h2[text()='Trusted By']" )
+    private WebElement trustedByTitleSection;
+
+    @FindBy(xpath = "//div/p[text()='Financial institutions, financial companies, and 300k+ users']")
+    private WebElement trustedByParagraphText;
+
+
+    //logos
+    @FindBy(xpath = "//div/img[@alt='etoro']")
+    private WebElement etoroLogo;
+    @FindBy(xpath = "//div/img[@alt='bnp']")
+    private WebElement bnpLogo;
+    @FindBy(xpath = "//div/img[@alt='iex']")
+    private WebElement iexLogo;
+    @FindBy(xpath = "//div/img[@alt='plum']")
+    private WebElement plumLogo;
+    @FindBy( xpath = "//div/img[@alt='stonex']")
+    private WebElement stoneXLogo;
+    @FindBy(xpath = "//div/img[@alt='obrain']")
+    private WebElement obrainLogo;
+    @FindBy(xpath = "//div/img[@alt='seedrs']")
+    private WebElement seedersLogo;
+    @FindBy(xpath ="//div/div[@class='main_carousel_slider']")
+    private WebElement firstSlider;
+
+    @FindBy (xpath = "//div[@data-index='1']//a[text()='Learn More']")
+    private WebElement firstSliderMoreBtn;
+
+    //slider section
+
+    @FindBy(xpath = "//div[contains(@class, '__tiles_slider___')]")
+    private WebElement slider;
+    @FindBy(xpath = "//div[contains(@class, '__carousel_tabs_item___')]")
+    private List<WebElement> carouselTabs;
+    @FindBy(xpath = "//div[contains(@class, '__tiles_slider_item_title___')]")
+    private List<WebElement> carouselTitles;
+    @FindBy(xpath = "//div[@class='main_carousel_slider']//div[@class='slick-list']")
+    private WebElement mainSliderSection;
+
+
+    // Top news Wrapper
+
+
+    @FindBy(xpath = "//div[contains(@class, 'top-news-wrapper')]")
+    private WebElement topNewsWrapper;
+
+    @FindBy(xpath  = "//div[contains(@class, 'top-news-wrapper')]//div[contains(@class, 'news-card__')]")
+    private List<WebElement> topNewsStories;
+    @FindBy(xpath = "//div[@data-component='Tooltip']//div[contains(@class,'tooltip-icon-wrapper')]")
+    private WebElement topNewsWrapperTooltip;
+
+    @FindBy(xpath = "//div[contains(@class, 'top-news-wrapper')]//parent::div[contains(@class, 'top-news-wrapper')]//div/a[text()='See More']")
+    private WebElement topNewsSeeMoreBtn;
+
+    //General Filers section
+    @FindBy(xpath ="//div[contains(@class,'__home-page__')]//div[contains(@class, '__general-filters-section___')]")
+    private WebElement generalFiltersSection;
+
+    @FindBy(xpath = "//div[contains(@class,'__home-page__')]//div[contains(@class,'__general-filters-section___')]//div/input[contains(@aria-label, 'simple')]")
+    private WebElement simpleLayoutBtn;
+    @FindBy(xpath = "//div[contains(@class,'__home-page__')]//div[contains(@class,'__general-filters-section___')]//div/input[contains(@aria-label, 'advanced')]")
+    private WebElement advancedLayout;
+    @FindBy(xpath = "//div[contains(@class,'__home-page__')]//div[contains(@class,'__simplified-layout-filters-desktop__')]//div/label[contains(@for, 'compact')]")
+    private WebElement compactView;
+    @FindBy(xpath = " //div[contains(@class,'__top-news-stories___')]")
+    private WebElement topNewsContainer;
+    @FindBy(xpath = "//div[contains(@class, 'top-news-wrapper')]//parent::div[contains(@class, 'top-news-wrapper')]//following::div[contains(@class, 'general-filters-section')]//div[contains(@class,'filters-wrapper')]//div[contains(@class,'location-filter')]")
+    private WebElement locationFilter;
 
 
     public HomePage(WebDriver driver) {
         super(driver);
-        //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@data-component='GreetingSection']"))));
+        //driver.findElement(By.xpath("//div[@data-component='GreetingSection']")));
+        wait.until(ExpectedConditions.visibilityOf(greetingsSection));
     }
-
-
-    /*
-    Slider
-     */
-
-
-    private final WebElement firstSlider = driver.findElement(By.xpath("//div/div[@class='main_carousel_slider']"));
-
-
-    private final WebElement firstSlideLearnMoreBtn = firstSlider.findElement(By.xpath("//div[@data-index='1']//a[text()='Learn More']"));
-
-
-
-    /*
-       Top news wrapper
-     */
-    private final WebElement topNewsWrapper = driver.findElement(By.xpath("//div[contains(@class, 'top-news-wrapper')]"));
-    private final WebElement topNewsWrapperContainer = topNewsWrapper.findElement(By.xpath("//parent::div[contains(@class, 'top-news-wrapper')]"));
-
-    private final List<WebElement> newsWrapperStories = topNewsWrapper.findElements(By.xpath("//div[contains(@class, 'news-card__')]"));
-    private final WebElement toolTip = topNewsWrapper.findElement(By.xpath("//div[@data-component='Tooltip']//div[contains(@class,'tooltip-icon-wrapper')]"));
-    private final WebElement seeMore = topNewsWrapper.findElement(By.xpath("//div/a[text()='See More']"));
-
-    /*
-    General filters settings
-     */
-    private final  WebElement generalSettings = driver.findElement(By.xpath("//div[contains(@class,'__home-page__')]//div[contains(@class, '__general-filters-section___')]"));
-
-
-  private  WebElement simpleLayout = driver.findElement(By.xpath("//div[contains(@class,'__home-page__')]//div[contains(@class,'__general-filters-section___')]//div/input[contains(@aria-label, 'simple')]"));
-  private  WebElement advancedLayout = driver.findElement(By.xpath("//div[contains(@class,'__home-page__')]//div[contains(@class,'__general-filters-section___')]//div/input[contains(@aria-label, 'advanced')]"));
-
-  private  WebElement compactView = generalSettings.findElement(By.xpath("//div[contains(@class,'__home-page__')]//div[contains(@class,'__simplified-layout-filters-desktop__')]//div/label[contains(@for, 'compact')]" ));
-
-
-    private final WebElement generalFiltersContainer = topNewsWrapperContainer.
-            findElement(By.xpath("//following::div[contains(@class, 'general-filters-section')]"));
-
-   // private WebElement locationFilter = driver.findElement(By.xpath("//div[contains(@class, 'top-news-wrapper')]//parent::div[contains(@class, 'top-news-wrapper')]//following::div[contains(@class, 'general-filters-section')]//div[contains(@class,'filters-wrapper')]//div[contains(@class,'location-filter')]"));
-
-    private final WebElement title2 = driver.findElement(By.xpath("//div/span[text()='General filters and settings'][1]"));
-
-//    @FindBy(xpath = "//div[text()='General filters and settings']")
-//    private WebElement title;
-
-
-
-
-
-
-
     public LocationSearchOnHomePage clickOnLocationFilters(){
-         //WebElement title = topNewsWrapper.findElement(By.xpath("//div[text()='Top Stories Globally']"));
-//        driver.navigate().refresh();
-//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[text()='General filters and settings']")));
-     //    WebElement title = driver.findElement(By.xpath("//div[text()='General filters and settings']"));
-        //div[contains(@class,'__home-page__')]//div[contains(@class,'__general-filters-section___')]
-        ////div[contains(@class,'__home-page__')]//div[contains(@class,'__general-filters-section___')]//span[text()='General filters and settings']
-        //div[text()='News by Location']
 
-            scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__top-news-stories___')]")));
-
-            WebElement locationFilter = driver.findElement(By.xpath("//div[contains(@class, 'top-news-wrapper')]//parent::div[contains(@class, 'top-news-wrapper')]//following::div[contains(@class, 'general-filters-section')]//div[contains(@class,'filters-wrapper')]//div[contains(@class,'location-filter')]"));
+            scrollToView(topNewsContainer);
 
            clickOnWebElement(locationFilter);
             return new LocationSearchOnHomePage(driver);
@@ -129,7 +141,7 @@ public class HomePage extends BasePage {
         return upgradeToGold.get(0).isDisplayed() && upgradeToGold.get(1).isDisplayed();
     }
     public HomePage clickOnGeoFiltersSimpleLayout(){
-        clickOnWebElement(simpleLayout);
+        clickOnWebElement(simpleLayoutBtn);
 
         return this;
     }
@@ -142,7 +154,7 @@ public class HomePage extends BasePage {
         return this;
     }
     public HomePage clickOnGeoFiltersCompactView(){
-        scrollToView(seeMore);
+        scrollToView(topNewsSeeMoreBtn);
         clickOnWebElement(compactView);
         WebElement globalTitle = driver.findElement(By.xpath("//div//h5[text()='Global']"));
         scrollToView(globalTitle);
@@ -158,27 +170,22 @@ public class HomePage extends BasePage {
         return this;
     }
     public HomePage userClicksOnDifferentOptionsOnTheSlideShow(){
-        //div[contains(@class, '__tiles_slider_item_container___')]
-        //div[contains(@class, '__carousel_tabs___')]
-        //div[contains(@class, '__top-news-wrapper___')]
-        scrollToView(driver.findElement(By.xpath("//div[contains(@class, '__tiles_slider_item_container___')]")));
-         List<WebElement> carouselTabs = driver.findElements(By.xpath("//div[contains(@class, '__carousel_tabs_item___')]"));
-         List<WebElement> carouselTitle = driver.findElements(By.xpath("//div[contains(@class, '__tiles_slider_item_title___')]"));
+
+        scrollToView(mainSliderSection);
+
 
         Map<String, WebElement> carouselBtnsAndSlideTitle = new HashMap<>();
         for (WebElement e : carouselTabs){
             carouselBtnsAndSlideTitle.put(e.getText(), e);
         }
-
         carouselBtnsAndSlideTitle.get("Sentiment").click();
-      //  clickOnWebElement(carouselBtnsAndSlideTitle.get("Sentiment"));
-       // waitForTime();
 
-        String slideTitle = carouselTitle.get(1).getText();
+        String slideTitle = carouselTitles.get(1).getText();
         if (slideTitle.equalsIgnoreCase("Insight into the mood of the market")){
             ExtentLogger.log("The carousel btn tabs are working correctly");
         }else{
             ExtentLogger.fail("The carousel btn sentiment tab is not returning the correct slide this is showing instead of sentiments " + slideTitle  );
+
         }
 
 

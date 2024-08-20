@@ -13,10 +13,10 @@ public class WatchListOnBoardingPreferences extends BasePage {
     }
    // private WebElement nextBtn = driver.findElement(By.xpath("//div[contains(@class,'__control-panel___')]//button[text()='Next']"));
 
-    public WatchListPage clickOnNextBtn(){
+    public GuestUserRegisterPage clickOnNextBtn(){
         WebElement nextBtn = driver.findElement(By.xpath("//div[contains(@class,'__control-panel___')]//button[text()='Next']"));
         clickOnWebElement(nextBtn);
-        return new WatchListPage(driver);
+        return new GuestUserRegisterPage(driver);
     }
 
 }

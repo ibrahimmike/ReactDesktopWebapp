@@ -4,16 +4,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 public class LocationSearchOnHomePage extends HomePage{
 
-    private final WebElement locationFilterHeader = driver.findElement(By.xpath("//div[@class='location-filter-sub-header']"));
+    @FindBy(xpath = "//div[@class='location-filter-sub-header']")
+    private WebElement locationFilterHeader;
 
-    private final WebElement languageBtn = driver.
-            findElement(By.xpath("//div[contains(@class, '__language-filter-wrapper__')]//button[@id='source-dropdown-button']"));
+
+    @FindBy(xpath = "//div[contains(@class, '__language-filter-wrapper__')]//button[@id='source-dropdown-button']")
+    private WebElement languageBtn;
+    @FindBy(xpath = "//div[contains(@class, '__location-filter-item__')]//span")
+    private List<WebElement>firstLayerList;
+
+   // private final WebElement locationFilterHeader = driver.findElement(By.xpath("//div[@class='location-filter-sub-header']"));
+
+//    private final WebElement languageBtn = driver.
+//            findElement(By.xpath("//div[contains(@class, '__language-filter-wrapper__')]//button[@id='source-dropdown-button']"));
 
     public LocationSearchOnHomePage(WebDriver driver) {
         super(driver);
@@ -24,7 +34,7 @@ public class LocationSearchOnHomePage extends HomePage{
     }
 
     private void clickOnChoice(String choice){
-         List<WebElement> firstLayerList = driver.findElements(By.xpath("//div[contains(@class, '__location-filter-item__')]//span"));
+      //   List<WebElement> firstLayerList = driver.findElements(By.xpath("//div[contains(@class, '__location-filter-item__')]//span"));
          for (WebElement e : firstLayerList){
             if (e.getText().equalsIgnoreCase(choice)){
                 e.click();

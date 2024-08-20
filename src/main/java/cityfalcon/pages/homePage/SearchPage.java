@@ -10,6 +10,7 @@ import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.lang.invoke.MethodHandle;
@@ -20,17 +21,36 @@ import java.util.List;
 
 public class SearchPage extends BasePage {
 
+    @FindBy(xpath = "//div[text()='Basic Search']" )
+    private WebElement basicSearchTab;
+
+    @FindBy(xpath = "//div[text()='Advanced Search']")
+    private WebElement advancedSearch;
+    @FindBy(xpath = "//div[text()='CANCEL']")
+    private WebElement cancelBtn;
+    @FindBy(xpath = "//div//section[@data-component='SearchbarInput']//input[@placeholder='']")
+    private WebElement searchBar;
+
+    @FindBy(xpath = "//div[@class='menu-wrapper--inner']//div[@class='menu-item-wrapper ']" )
+    private List<WebElement> menuItems;
+    @FindBy(xpath = "//div[@role='tabpanel']//h3")
+    private WebElement tabPanel;
+    @FindBy(xpath = "//div[contains(@class, '__search_result_name__')]//span[contains(@class, 'module__name__')]" )
+    private List<WebElement> listOfSearchResult;
 
 
-    private  WebElement basicSearchTab = driver.findElement(By.xpath("//div[text()='Basic Search']"));
-    private  WebElement advancedSearch = driver.findElement(By.xpath("//div[text()='Advanced Search']"));
-    private  WebElement cancelBtn = driver.findElement(By.xpath("//div[text()='CANCEL']"));
-    private  WebElement searchBar = driver.findElement(By.xpath("//div//section[@data-component='SearchbarInput']//input[@placeholder='']"));
-    private  List<WebElement> menuItems = driver.findElements(By.xpath("//div[@class='menu-wrapper--inner']//div[@class='menu-item-wrapper ']"));
+
+
+
+   // private  WebElement basicSearchTab = driver.findElement(By.xpath("//div[text()='Basic Search']"));
+   // private  WebElement advancedSearch = driver.findElement(By.xpath("//div[text()='Advanced Search']"));
+//    private  WebElement cancelBtn = driver.findElement(By.xpath("//div[text()='CANCEL']"));
+  //  private  WebElement searchBar = driver.findElement(By.xpath("//div//section[@data-component='SearchbarInput']//input[@placeholder='']"));
+   // private  List<WebElement> menuItems = driver.findElements(By.xpath("//div[@class='menu-wrapper--inner']//div[@class='menu-item-wrapper ']"));
 
    // private  WebElement tabPanel = driver.findElement(By.xpath("//div[@role='tabpanel']//h3"));
-    private   List< WebElement> listOfSearchResult = driver.
-           findElements(By.xpath("//div[contains(@class, '__search_result_name__')]//span[contains(@class, 'module__name__')]"));
+//    private   List< WebElement> listOfSearchResult = driver.
+//           findElements(By.xpath("//div[contains(@class, '__search_result_name__')]//span[contains(@class, 'module__name__')]"));
 
 
     public SearchPage(WebDriver driver) {

@@ -8,6 +8,7 @@ import cityfalcon.pages.productsPages.ProductsWebAppPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ConsumerProduct extends BasePage {
 
@@ -15,11 +16,20 @@ public class ConsumerProduct extends BasePage {
             super(driver);
         }
 
-        private final WebElement allProducts = driver.findElement(By.xpath("//section[6]//ul/li/a[@href='/products']"));
-        private final WebElement cityFalconAiBtn = driver.findElement(By.xpath("//section[6]//ul/li/a[@href='/products/webapp']"));
-        private final WebElement iosAndAndroidApps = driver.findElement(By.xpath("//section[6]//ul/li/a[@href='https://www.cityfalcon.ai/products/mobileapp']"));
-        private final WebElement cityFalconVoiceAssistent = driver.findElement(By.xpath("//section[6]//ul/li/a[@href='/products/voiceassistant']"));
-        private final WebElement cityFalconBotComingSoon = driver.findElement(By.xpath("//section[6]//ul/li//div[text()='CityFALCON Chat Bot']"));
+        @FindBy(xpath = "//section[6]//ul/li/a[@href='/products']")
+        private WebElement allProducts;
+
+        @FindBy(xpath = "//section[6]//ul/li/a[@href='/products/webapp']" )
+        private WebElement cityFalconAiBtn;
+
+        @FindBy(xpath = "//section[6]//ul/li/a[@href='https://www.cityfalcon.ai/products/mobileapp']")
+        private WebElement iosAndAndroidApps;
+        @FindBy(xpath = "//section[6]//ul/li/a[@href='/products/voiceassistant']")
+        private WebElement cityFalconVoiceAssistent;
+        @FindBy(xpath = "//section[6]//ul/li//div[text()='CityFALCON Chat Bot']")
+        private WebElement cityFalconBotComingSoon;
+
+
         public ProductsPage clickOnAllProductsBtn(){
             clickOnWebElement(allProducts);
             return new ProductsPage(driver);

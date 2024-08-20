@@ -5,6 +5,7 @@ import cityfalcon.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
@@ -13,16 +14,27 @@ import java.util.List;
 import java.util.Map;
 
 public class CompanyFilingsBySource extends BasePage {
-    private WebElement filingsBySourceContainer = driver.findElement(By.xpath("//div[contains(@class,'__company-data-wrapper___')]//" +
+
+    @FindBy(xpath = "//div[contains(@class,'__company-data-wrapper___')]//" +
             "div[text()='Company Filings by Sources']//parent::div[contains(@class, '__section-wrapper-header-left___')]" +
-            "//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]"));
+            "//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]")
+    private WebElement filingsBySourceContainer;
+    @FindBy(xpath = "//div[contains(@class,'__discovery-videos-slider-wrapper___')]")
+    private WebElement sliderWrapper;
+
+//    @FindBy(xpath ="//div[contains(@class,'__company-data-wrapper___')]//" +
+//            "div[text()='Company Filings by Sources']//parent::div[contains(@class, '__section-wrapper-header-left___')]" +
+//                    "//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')] "+
+//                    "//div[contains(@class,'__items-scroll-bar___')]//div[@class='menu-item-wrapper ']")
+//    private List<WebElement> items;
+
 
     public CompanyFilingsBySource(WebDriver driver) {
         super(driver);
-        wait.until(ExpectedConditions.visibilityOf(filingsBySourceContainer));
+        wait.until(ExpectedConditions.visibilityOf(sliderWrapper));
     }
     public HomePage checkFiltersOfTheEsgContainers(){
-        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__discovery-videos-slider-wrapper___')]")));
+        scrollToView(sliderWrapper);
         waitForTime();
         List<WebElement> items = filingsBySourceContainer.findElements(By.xpath("//div[contains(@class,'__items-scroll-bar___')]//div[@class='menu-item-wrapper ']"));
         Map<String, WebElement> clickableItems = new HashMap<>();

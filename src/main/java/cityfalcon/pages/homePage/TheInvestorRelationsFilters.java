@@ -5,6 +5,7 @@ import cityfalcon.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
@@ -14,7 +15,13 @@ import java.util.Map;
 
 public class TheInvestorRelationsFilters extends BasePage {
 
-   private WebElement mainInvestorRelationsContainer  = driver.findElement(By.xpath("//div[contains(@class,'__company-data-wrapper___')]//div[text()='Investor Relations']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]"));
+    @FindBy(xpath = "//div[contains(@class,'__company-data-wrapper___')]//div[text()='Investor Relations']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]")
+    private WebElement mainInvestorRelationsContainer;
+
+    @FindBy(xpath = "//div[contains(@class,'__discovery-videos-slider-wrapper___')]")
+    private WebElement discoverVideo;
+
+   //private WebElement mainInvestorRelationsContainer  = driver.findElement(By.xpath("//div[contains(@class,'__company-data-wrapper___')]//div[text()='Investor Relations']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]"));
 
 
     public TheInvestorRelationsFilters(WebDriver driver) {
@@ -25,7 +32,7 @@ public class TheInvestorRelationsFilters extends BasePage {
     public HomePage clickOnTheEarningsAndCheckIfTheCategoriesAreChanging(){
         //div[contains(@class,'__company-data-wrapper___')]//div[text()='Investor Relations']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]//div[contains(@class,'__items-scroll-bar___')]//parent::div[contains(@class,'__company-data-section___')]//parent::div[contains(@class,'__section-wrapper-content___')]//parent::div[contains(@class,'__section-wrapper-container___')]//div[text()='Investor Relations']
 //mainInvestorRelationsContainer.findElement(By.xpath("//parent::div[contains(@class,'__company-data-section___')]//parent::div[contains(@class,'__section-wrapper-content___')]//parent::div[contains(@class,'__section-wrapper-container___')]"))
-        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__discovery-videos-slider-wrapper___')]")));
+        scrollToView(discoverVideo);
         waitForTime();
 
 
