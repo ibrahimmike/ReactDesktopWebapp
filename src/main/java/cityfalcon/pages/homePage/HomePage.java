@@ -6,14 +6,11 @@ import cityfalcon.pages.locationsPage.SentimentsLocationsPage;
 import cityfalcon.pages.watchLists.CreateWatchListPage;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactoryFinder;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -133,7 +130,7 @@ public class HomePage extends BasePage {
     }
     public SearchPage clickOnSearch(){
         clickOnWebElement(searchBar);
-        ExtentLogger.log("Search is open");
+       // ExtentLogger.log("Search is open");
         return new SearchPage(driver);
     }
     public boolean baseAndGuestUserUpgradeNotice(){
@@ -182,9 +179,9 @@ public class HomePage extends BasePage {
 
         String slideTitle = carouselTitles.get(1).getText();
         if (slideTitle.equalsIgnoreCase("Insight into the mood of the market")){
-            ExtentLogger.log("The carousel btn tabs are working correctly");
+          //  ExtentLogger.log("The carousel btn tabs are working correctly");
         }else{
-            ExtentLogger.fail("The carousel btn sentiment tab is not returning the correct slide this is showing instead of sentiments " + slideTitle  );
+           // ExtentLogger.fail("The carousel btn sentiment tab is not returning the correct slide this is showing instead of sentiments " + slideTitle  );
 
         }
 

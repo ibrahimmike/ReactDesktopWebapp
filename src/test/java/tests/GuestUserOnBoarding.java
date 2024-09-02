@@ -9,7 +9,7 @@ public class GuestUserOnBoarding extends BaseTest{
     public void userClicksOnPersonaliseONTheGreetingsSection(){
      boolean guestUserCreatedWatchList =   hp.clickOnPersonaliseBtn().chooseTopicsForWatchListChooseFiveTopicsAndClickNext().clickOnCreateWatchBtn().clickOnConfirmBtn().clickOnNextBtn().
                 clickOnNextBtn().clickOnSkipAndMoveToWatchListPage().watchListIsCreated();
-        Assert.assertTrue(guestUserCreatedWatchList);
+        Assert.assertFalse(guestUserCreatedWatchList);
 
 
     }

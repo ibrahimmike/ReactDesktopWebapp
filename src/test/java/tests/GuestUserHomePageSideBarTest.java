@@ -1,9 +1,5 @@
 package tests;
 
-import cityfalcon.pages.HeaderPage;
-import cityfalcon.pages.homePage.HomePage;
-import org.apache.hc.core5.http.Header;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GuestUserHomePageSideBarTest extends BaseTest{

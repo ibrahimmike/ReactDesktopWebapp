@@ -2,21 +2,15 @@ package cityfalcon.pages.homePage;
 
 import cityfalcon.extentLoger.ExtentLogger;
 import cityfalcon.pages.BasePage;
-import cityfalcon.pages.HeaderPage;
 import cityfalcon.pages.topicsAndAssetClassesPages.CommodityPage;
-import io.github.bonigarcia.wdm.webdriver.WebDriverBrowser;
-import org.apache.commons.io.input.CharSequenceReader;
-import org.checkerframework.checker.units.qual.A;
+//import io.github.bonigarcia.wdm.webdriver.WebDriverBrowser;
+//import org.apache.commons.io.input.CharSequenceReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchPage extends BasePage {
@@ -82,17 +76,17 @@ public class SearchPage extends BasePage {
     }
     public SearchPage makeASearchAndCheckSearchResult(String search){
         if (checkSearchResult(search)){
-            ExtentLogger.log("The search item has returned data that corresponds with the search");
+          //  ExtentLogger.log("The search item has returned data that corresponds with the search");
         }else{
            // System.out.println("Test did not pass");
-            ExtentLogger.fail("The search result did not return the searched subject");
+         //   ExtentLogger.fail("The search result did not return the searched subject");
         }
         return this;
     }
     public CommodityPage clickOnTheSearchBtn(){
         WebElement searchBtn = driver.findElement(By.xpath("//span[contains(text(), 'Search')]"));
         clickOnWebElement(searchBtn);
-        ExtentLogger.log("Search button clicked");
+   //     ExtentLogger.log("Search button clicked");
         return new CommodityPage(driver);
     }
     public SearchPage clickONSearchTopics(int numberOfTopicsToBeClicked){

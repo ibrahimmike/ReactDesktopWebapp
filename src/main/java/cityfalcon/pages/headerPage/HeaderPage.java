@@ -1,5 +1,6 @@
-package cityfalcon.pages;
+package cityfalcon.pages.headerPage;
 
+import cityfalcon.pages.BasePage;
 import cityfalcon.pages.sideBarList.SideMenuGuestUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

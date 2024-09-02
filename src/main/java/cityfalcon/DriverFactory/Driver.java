@@ -8,7 +8,7 @@ public class Driver {
 
 
     public static WebDriver initDriver(){
-        if (Objects.isNull(DriverManager.getDriver())){
+       if (Objects.isNull(DriverManager.getDriver())){
             try {
            //     AssignWebDriver.getWebDriver();
                 DriverManager.setDrivers(AssignWebDriver.getWebDriver());

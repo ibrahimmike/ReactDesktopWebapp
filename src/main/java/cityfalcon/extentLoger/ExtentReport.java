@@ -1,12 +1,12 @@
 package cityfalcon.extentLoger;
 
+
 import cityfalcon.utils.ReadDefaultProperties;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class ExtentReport{
@@ -49,9 +49,9 @@ public class ExtentReport{
     private static String getReportsPath(){
         if (ReadDefaultProperties.getPropertyValue("overrideReports").equalsIgnoreCase("no")){
             date = new Date();
-            return "reports/" + date.toString()+".html";
+            return "test-output/" + date.toString()+".html";
         }
-        return "reports/";
+        return "test-output/";
     }
 
 

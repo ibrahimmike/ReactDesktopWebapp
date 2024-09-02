@@ -14,10 +14,8 @@ import java.time.Duration;
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected Robot robot;
-   //protected boolean pageLoaded;
 
-   // protected Actions actions;
+
     public BasePage(WebDriver driver){
         this.driver = driver;
 //       pageLoaded = new WebDriverWait(driver, Duration.ofSeconds(60)).until(
@@ -73,10 +71,7 @@ public class BasePage {
             e.getMessage();
         }
     }
-//    protected void scrollToView2(WebElement element){
-//               ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-//
-//    }
+
 
     protected void scrollDownToElement(WebElement element){
         Actions actions = new Actions(driver);
@@ -89,9 +84,6 @@ public class BasePage {
     }
     protected void scrollActions(WebElement element, int amount){
         Actions actions = new Actions(driver);
-    //    actions.scrollByAmount(200, amount).perform();
-     //   actions.moveByOffset(200, amount).perform();
-    //    actions.scrollByAmount(0, amount);
 
         actions.scrollFromOrigin(WheelInput.ScrollOrigin.fromElement(element),0, amount);
         actions.perform();

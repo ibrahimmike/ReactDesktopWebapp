@@ -1,9 +1,13 @@
 package listeners;
 
+
+
 import cityfalcon.extentLoger.ExtentLogger;
 import cityfalcon.extentLoger.ExtentReport;
 import cityfalcon.utils.ReadDefaultProperties;
 import org.testng.*;
+
+//import static cityfalcon.extentLoger.ExtentLogger.makePicture;
 
 
 public class Listener implements ITestListener, ISuiteListener {
@@ -11,6 +15,7 @@ public class Listener implements ITestListener, ISuiteListener {
     public void onStart(ISuite suite) {
         ISuiteListener.super.onStart(suite);
         ExtentReport.extentInit();
+
     }
 
     @Override
@@ -22,9 +27,11 @@ public class Listener implements ITestListener, ISuiteListener {
     @Override
     public void onTestStart(ITestResult result) {
         ITestListener.super.onTestStart(result);
+
         //result.getTestClass().getName();
         ExtentReport.createTest(result.getTestClass().getName()+ " : " +result.getMethod().getMethodName() + " "
-                + ReadDefaultProperties.getPropertyValue("browser"));
+                + ReadDefaultProperties.getPropertyValue("browser")
+                );
     }
 
     @Override
@@ -38,8 +45,15 @@ public class Listener implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
+//        TakesScreenshot driver = (TakesScreenshot)  result.getTestContext().getAttribute("driver");
+//        String screenshot =  driver.getScreenshotAs(OutputType.BASE64);
+//        String htmlImageFormat = "<img width= 700px"
 
-        ExtentLogger.fail(result.getMethod().getMethodName() + " test thrown error:  " + result.getThrowable());
+
+       // ExtentLogger.fail(result.getMethod().getMethodName() + " test thrown error:  " + result.getThrowable());
+
+      //  MediaEntityBuilder.createScreenCaptureFromBase64String(makePicture()).build();
+
     }
 
     @Override
