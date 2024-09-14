@@ -26,6 +26,5 @@ How to fix:
 4. Remember that React is all about reusing components, so it is totally normal that the same class and data in the html appear multiple times in different components, so use Parent child and ancestor xpaths to locate the desired component. 
 
 
-Leveraging OOP principals in creating test automation framework can go a long way as the web page can be divided into multiple components, each component is tranformed into a Page object with the page object model (POM) containing the necessary code to create the needed actions and the extra reports and assertions needed for the tests.
-
-In which concerns the locators how to locate elements without the need of a complete changes, with every code update, choose relative xpaths for each Component in the page object add a wait or an assertion that the page is loaded, before activating start to call web elements for test scenarios, remember in React each part is a different component.  
+How to run pull the code and run in the terminal 
+<p>```mvn clean install ```</p>
