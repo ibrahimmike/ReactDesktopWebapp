@@ -27,4 +27,6 @@ How to fix:
 
 
 How to run pull the code and run in the terminal 
-<p>```mvn clean install ```</p>
+```java 
+mvn clean install
+ ```
