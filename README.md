@@ -37,4 +37,4 @@ mvn clean install
 mvn tests
 ```
 
-<h3>Important notice : that is a work in process still, so it should be continued<h3>
+<h3>Important notice : that is a work in progress still, so it should be continued<h3>
