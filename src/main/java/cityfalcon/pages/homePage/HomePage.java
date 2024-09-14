@@ -115,6 +115,8 @@ public class HomePage extends BasePage {
     private WebElement locationFilter;
 
 
+
+
     public HomePage(WebDriver driver) {
         super(driver);
         //driver.findElement(By.xpath("//div[@data-component='GreetingSection']")));
@@ -235,7 +237,6 @@ public class HomePage extends BasePage {
         return new CreateWatchListPage(driver);
     }
 
-    //div[contains(@class,'__company-data-wrapper___')]//div[text()='Investor Relations']//parent::div[contains(@class, '__section-wrapper-header-left___')]//parent::div[contains(@class,'__section-wrapper-header___')]//parent::div[contains(@class,'__section-wrapper-container___')]
 
 
 

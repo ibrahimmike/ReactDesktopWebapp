@@ -11,25 +11,39 @@ import java.util.Objects;
 
 public class ResourceLoader {
 
-//    private static final Logger loger = LoggerFactory.getLogger(ResourceLoader.class);
-//
-//    public static InputStream getResource() throws IOException {
-//      //  loger.info("Reading path {}");
-//
-//           InputStream stream = ResourceLoader.class.getClassLoader().getResourceAsStream("propertyfiles/default.properties") ;
-//
-//        if (Objects.nonNull(stream)){
-//            System.out.println("The fist path is not null");
-//            return stream;
-//        }
-//        System.out.println( "Root directory " + System.getProperty("user.dir"));
-//            System.out.println("The first path was null and that is the response from the second");
-//             return Files.newInputStream(Path.of( "src/main/resources/propertyfiles/default.properties"));
-//
-//
-//
-//
+    //private static final Logger loger = LoggerFactory.getLogger(ResourceLoader.class);
 
-  //  }
+    public static InputStream getResource() {
+
+
+        InputStream stream;
+        try {
+            System.out.println("Hello I am the first try on the resources " + "src/test/resources/propertyfiles/default.properties");
+            stream = Files.newInputStream(Path.of("src/test/resources/propertyfiles/default.properties"));
+
+
+        } catch (IOException e) {
+            try {
+                System.out.println("Hello I am the second try on the resources " + "propertyfiles/default.properties");
+                stream = Files.newInputStream(Path.of("propertyfiles/default.properties"));
+
+            } catch (IOException c) {
+                throw new RuntimeException("Both the paths are not returning  the values of the configurations");
+
+
+            }
+        }
+        if (Objects.isNull(stream)){
+            System.out.println("Hello I am the stream was null ");
+            throw new RuntimeException("Stream was not set to a value");
+        }
+        return stream;
+    }
+
+
+
+
+
+
 
 }

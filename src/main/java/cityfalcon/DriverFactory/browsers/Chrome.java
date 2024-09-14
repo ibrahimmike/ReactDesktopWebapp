@@ -2,10 +2,12 @@ package cityfalcon.DriverFactory.browsers;
 
 import cityfalcon.utils.ReadDefaultProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 
@@ -15,9 +17,9 @@ import java.net.URL;
 public class Chrome {
 
     public static WebDriver createChromeDriver() {
-        System.out.println("Chrome driver has started The driver has started");
-        //  System.out.println( "Hello I am runmode = "   +ReadDefaultProperties.getPropertyValue("runMode"));
-        WebDriver driver = null;
+//        System.out.println("Chrome driver has started The driver has started");
+//          System.out.println( "Hello I am runmode = "   +ReadDefaultProperties.getPropertyValue("runMode"));
+
         if (ReadDefaultProperties.getPropertyValue("selenium.grid.enabled").equalsIgnoreCase("true")) {
             try {
             System.out.println("The boolean was true");
@@ -36,13 +38,22 @@ public class Chrome {
             }
         } else {
             ChromeOptions options = new ChromeOptions();
+//            options.setBinary("/opt/google/chrome/chrome");
             options.addArguments("--disable-notifications");
             options.addArguments("--start-maximized");
-            options.addArguments("--disable-features=EnableEphemeralFlashPermission");
+          //  options.addArguments("--disable-features=EnableEphemeralFlashPermission");
             options.addArguments("--disable-infobars");
-            WebDriverManager.chromedriver().setup();
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            //disable-dev-shm-usage
+            options.addArguments("--disable-extensions");
+          //  options.addArguments("--disable-gpu");
+
             System.out.println("I am inside the local WebDriver options ");
-            return new ChromeDriver(options);
+
+            WebDriverManager.chromedriver().clearDriverCache().setup();
+            WebDriverManager.chromedriver().clearResolutionCache().setup();
+            return  new ChromeDriver(options);
         }
 
     }

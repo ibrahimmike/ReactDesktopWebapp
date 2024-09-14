@@ -1,6 +1,9 @@
 package cityfalcon.extentLoger;
 
 import cityfalcon.DriverFactory.DriverManager;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class ExtentLogger {
 
@@ -13,7 +16,7 @@ public class ExtentLogger {
     }
 
     public static void fail(String message){
-        ExtentManager.getReport().fail(message);
+        ExtentManager.getReport().fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(makePicture()).build());
     }
     public static void skip(String message){
         ExtentManager.getReport().skip(message);
@@ -26,7 +29,7 @@ public class ExtentLogger {
 //    }
 
 
-//    public static String makePicture(){
-//        return  ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
-//    }
+    public static String makePicture(){
+        return  ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
+    }
 }

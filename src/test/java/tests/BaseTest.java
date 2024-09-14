@@ -2,33 +2,42 @@ package tests;
 
 import cityfalcon.DriverFactory.Driver;
 import cityfalcon.pages.homePage.HomePage;
-import listeners.Listener;
+import cityfalcon.utils.ReadDefaultProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-@Listeners({Listener.class})
+@Listeners(listeners.Listener.class)
 public class BaseTest {
 
-    WebDriver driver;
+    protected WebDriver driver;
 
     public HomePage hp ;
-    @BeforeSuite
-    public void beforeSuite(){
+//    @BeforeSuite
+//    public void beforeSuite(){
+//
+//
+//
+//    }
+
+    @BeforeClass
+    public void setUp(){
+
+        System.out.println(ReadDefaultProperties.getPropertyValue("browser"));
+
 
     }
 
     @BeforeTest
 //    @Parameters({"browser"})
     public void setWebDriver(){
+        driver = Driver.initDriver();
+
        // ReadDefaultProperties.initializeProperties();
 
 
-       driver = Driver.initDriver();
-      // context.setAttribute("driver", this.driver);
-
         hp = new HomePage(driver);
 
-     //   System.out.println(ReadDefaultProperties.getPropertyValue("browser"));
+
 
     }
 //    @Test

@@ -17,7 +17,7 @@ public class Driver {
                // DriverManager.getDriver().get(ReadPropertyFiles.getPropertyValue("url"));
               //  driver = DriverManager.getDriver();
             }catch(Exception e){
-                throw new RuntimeException("The driver could not be invoked");
+                throw new RuntimeException("The driver could not be invoked" + e.getMessage());
             }
         }
 

@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>ReactDesktopWebApp</artifactId>
     <version>1.0-SNAPSHOT</version>
+<!--    <maven.compiler.version>3.12.1</maven.compiler.version>-->
 
 
     <properties>
@@ -14,7 +15,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.testng.version>7.10.2</org.testng.version>
-        <org.selenium.version>4.21.0</org.selenium.version>
+        <org.selenium.version>4.24.0</org.selenium.version>
         <org.webdriverManager.version>5.8.0</org.webdriverManager.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.version>3.12.1</maven.compiler.version>
@@ -26,6 +27,8 @@
         <maven.jar.version>3.4.2</maven.jar.version>
         <package.directory>${project.build.directory}/docker-resources</package.directory>
         <logback.version>1.4.8</logback.version>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
     <dependencies>
 
@@ -36,19 +39,34 @@
         </dependency>
 
 
+<!--        <dependency>-->
+<!--            <groupId>org.seleniumhq.selenium</groupId>-->
+<!--            <artifactId>selenium-server</artifactId>-->
+<!--            <version>3.141.59</version>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${org.testng.version}</version>
-            <scope>compile</scope>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>${org.selenium.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-<!--            <version>${org.webdriverManager.version}</version>-->
+<!--         <version>${org.webdriverManager.version}</version>-->
             <version>5.9.2</version>
-<!--            <scope>test</scope>-->
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -63,10 +81,16 @@
             <version>5.0.9</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.5</version>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.9.2</version>
+            <scope>compile</scope>
         </dependency>
+        <!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-simple</artifactId>-->
+<!--            <version>1.7.5</version>-->
+<!--        </dependency>-->
 
 
     </dependencies>
@@ -96,25 +120,27 @@
 <!--                    <goal>test</goal>-->
 <!--                </goals>-->
                 <configuration>
-                    <forkedProcessExitTimeoutInSeconds>120</forkedProcessExitTimeoutInSeconds>
-                    <includes>
-                        <include>**/Test*.java</include>
-                        <include>**/*Test.java</include>
-                    </includes>
-<!--                    <dependenciesToScan>-->
-<!--                        <dependency>com.aventstack</dependency>-->
+<!--                    <forkedProcessExitTimeoutInSeconds>120</forkedProcessExitTimeoutInSeconds>-->
+<!--                    <includes>-->
+<!--                        <include>**/Test*.java</include>-->
+<!--                        <include>**/*Test.java</include>-->
+<!--                    </includes>-->
+                    <dependenciesToScan>
+                        <dependency>com.aventstack</dependency>
 <!--                        <dependency>org.testng</dependency>-->
+<!--                        <dependency>io.github.bonigarcia</dependency>-->
 
-<!--                    </dependenciesToScan>-->
+                    </dependenciesToScan>
                     <properties>
                         <excludeTags>slow</excludeTags>
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>false</value> <!-- disabling default listeners is optional -->
+                        </property>
+
 <!--                        <property>-->
-<!--                            <name>usedefaultlisteners</name>-->
-<!--                            <value>false</value> &lt;!&ndash; disabling default listeners is optional &ndash;&gt;-->
-<!--                        </property>-->
-<!--                        <property>-->
-<!--                            <name>listener</name>-->
-<!--                            <value>listeners.Listener</value>-->
+<!--                            <name>reporter</name>-->
+<!--                            <value>reports</value>-->
 <!--                        </property>-->
 
                     </properties>
@@ -126,6 +152,7 @@
                         <file>src/test/resources/testSuites/TestNg.xml</file>
 <!--                        <file>src/test/resources/testSuites/GuestUserTests.xml</file>-->
                     </suiteXmlFiles>
+<!--                    <argLine>-javaagent:${io.github.bonigarcia:webdrivermanager:jar}</argLine>-->
 
                     <parallel>none</parallel>
                     <threadCount>4</threadCount>
@@ -143,7 +170,11 @@
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
+                            <goal>properties</goal>
+
                         </goals>
+
+
 
                         <configuration>
                             <outputDirectory>
@@ -208,25 +239,25 @@
             </plugin>
 
 
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--                <version>2.22.0</version>-->
-<!--                <configuration>-->
-<!--                    <classesDirectory>${project.build.directory}</classesDirectory>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <classesDirectory>${project.build.directory}</classesDirectory>
 
-<!--                </configuration>-->
+                </configuration>
 
-<!--                <executions>-->
+                <executions>
 
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>integration-test</goal>-->
-<!--                            <goal>verify</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
 
 <!--                <plugin>-->

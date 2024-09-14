@@ -36,15 +36,7 @@ public class SearchPage extends BasePage {
 
 
 
-   // private  WebElement basicSearchTab = driver.findElement(By.xpath("//div[text()='Basic Search']"));
-   // private  WebElement advancedSearch = driver.findElement(By.xpath("//div[text()='Advanced Search']"));
-//    private  WebElement cancelBtn = driver.findElement(By.xpath("//div[text()='CANCEL']"));
-  //  private  WebElement searchBar = driver.findElement(By.xpath("//div//section[@data-component='SearchbarInput']//input[@placeholder='']"));
-   // private  List<WebElement> menuItems = driver.findElements(By.xpath("//div[@class='menu-wrapper--inner']//div[@class='menu-item-wrapper ']"));
 
-   // private  WebElement tabPanel = driver.findElement(By.xpath("//div[@role='tabpanel']//h3"));
-//    private   List< WebElement> listOfSearchResult = driver.
-//           findElements(By.xpath("//div[contains(@class, '__search_result_name__')]//span[contains(@class, 'module__name__')]"));
 
 
     public SearchPage(WebDriver driver) {

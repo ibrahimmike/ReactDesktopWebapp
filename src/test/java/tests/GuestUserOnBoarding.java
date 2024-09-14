@@ -1,8 +1,9 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(listeners.Listener.class)
 public class GuestUserOnBoarding extends BaseTest{
 
     @Test(priority = 1)

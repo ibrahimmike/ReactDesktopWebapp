@@ -14,6 +14,7 @@ public class Listener implements ITestListener, ISuiteListener {
     @Override
     public void onStart(ISuite suite) {
         ISuiteListener.super.onStart(suite);
+
         ExtentReport.extentInit();
 
     }
@@ -50,11 +51,13 @@ public class Listener implements ITestListener, ISuiteListener {
 //        String htmlImageFormat = "<img width= 700px"
 
 
-       // ExtentLogger.fail(result.getMethod().getMethodName() + " test thrown error:  " + result.getThrowable());
+        ExtentLogger.fail(result.getMethod().getMethodName() + " test thrown error:  " + result.getThrowable());
 
-      //  MediaEntityBuilder.createScreenCaptureFromBase64String(makePicture()).build();
+      //  ;
 
     }
+
+
 
     @Override
     public void onTestSkipped(ITestResult result) {

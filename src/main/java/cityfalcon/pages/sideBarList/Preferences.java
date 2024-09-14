@@ -6,16 +6,26 @@ import cityfalcon.pages.RegisterFrameGuestUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class Preferences extends BasePage {
+
+       @FindBy(xpath = "//section[5]/ul/li/a[@href='/preferences/account']")
+       private  WebElement accountPreferences;
+       @FindBy(xpath = "//section[5]/ul/li/a[@href='/preferences/subscription']")
+       private WebElement subscription;
+       @FindBy(xpath = "//section[5]/ul/li/a[@href='/preferences/notifications']")
+       private WebElement notifications;
+       @FindBy(xpath = "//section[5]/ul/li/a[@href='/watchlists/manage']")
+       private WebElement manageWatchLists;
 
         public Preferences(WebDriver driver) {
             super(driver);
         }
-        private final WebElement accountPreferences = driver.findElement(By.xpath("//section[5]/ul/li/a[@href='/preferences/account']"));
-        private final  WebElement subscription = driver.findElement(By.xpath("//section[5]/ul/li/a[@href='/preferences/subscription']"));
-        private final WebElement  notifications = driver.findElement(By.xpath("//section[5]/ul/li/a[@href='/preferences/notifications']"));
-        private final WebElement manageWatchLists = driver.findElement(By.xpath("//section[5]/ul/li/a[@href='/watchlists/manage']"));
+
+
+
+
         public RegisterFrameGuestUser clickOnAccountInfoGuestUser(){
             clickOnWebElement(accountPreferences);
             return new RegisterFrameGuestUser(driver);

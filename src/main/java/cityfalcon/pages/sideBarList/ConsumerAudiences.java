@@ -1,10 +1,9 @@
 package cityfalcon.pages.sideBarList;
 
 import cityfalcon.pages.BasePage;
-import cityfalcon.pages.DailyNewsReader;
+import cityfalcon.pages.DailyNewsReadersPages.DailyNewsReader;
 import cityfalcon.pages.retailPages.RetailInvestorsPage;
 import cityfalcon.pages.retailPages.RetailTraders;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

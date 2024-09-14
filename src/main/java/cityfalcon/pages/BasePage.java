@@ -16,6 +16,7 @@ public class BasePage {
     protected WebDriverWait wait;
 
 
+
     public BasePage(WebDriver driver){
         this.driver = driver;
 //       pageLoaded = new WebDriverWait(driver, Duration.ofSeconds(60)).until(
@@ -87,6 +88,11 @@ public class BasePage {
 
         actions.scrollFromOrigin(WheelInput.ScrollOrigin.fromElement(element),0, amount);
         actions.perform();
+    }
+    protected void hoverOver(WebElement element,int width, int height){
+        Actions actions = new Actions(driver);
+
+
     }
 
 

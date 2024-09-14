@@ -3,6 +3,7 @@ package cityfalcon.pages.watchLists;
 import cityfalcon.extentLoger.ExtentLogger;
 import cityfalcon.pages.BasePage;
 import cityfalcon.pages.homePage.SearchPage;
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,7 @@ public class CreateWatchListPage extends BasePage {
         waitForTime();
         TopicsInTheSearch topicsInTheSearch = new TopicsInTheSearch(driver);
         boolean topicsAreShowing = topicsInTheSearch.TopicsAreBeingAddedToTheSearchBar();
+
         if(topicsAreShowing){
             ExtentLogger.pass("The topics Are showing on the search bar when the user has added them to the watch list ");
         }else{

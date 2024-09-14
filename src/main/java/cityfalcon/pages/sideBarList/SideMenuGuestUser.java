@@ -13,6 +13,7 @@ import cityfalcon.pages.segments.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class SideMenuGuestUser extends BasePage {
 
@@ -20,14 +21,28 @@ public class SideMenuGuestUser extends BasePage {
         super(driver);
     }
 
-    private final WebElement minimizeBtn = driver.findElement(By.xpath("//div[text()='Minimize']"));
-    private final WebElement cityFalconChatBtn = driver.findElement(By.xpath("//div[text()='CityFALCON  Chat']"));
-    private final WebElement personaliseContent = driver.findElement(By.xpath("//div[text()='Personalised Content']"));
 
-    private final WebElement allContent = driver.findElement(By.xpath("//aside/article/section[3]"));
-    private final WebElement searchBtn = driver.findElement(By.xpath("//section[4]/a[@href='/search']"));
-    private final WebElement preferencesBtn = driver.findElement(By.xpath("//section[5]/a[@data-component='Item']"));
-    private final WebElement productInfo = driver.findElement(By.xpath("//section[6]/a[@href='/']"));
+    @FindBy(xpath =  "//div[text()='Minimize']")
+    private WebElement minimizeBtn;
+    @FindBy(xpath = "//div[text()='CityFALCON  Chat']")
+    private WebElement cityFalconChatBtn;
+
+
+    @FindBy(xpath = "//div[text()='Personalised Content']")
+    private WebElement personaliseContent;
+    @FindBy(xpath = "//aside/article/section[3]")
+    private WebElement allContent;
+
+    @FindBy(xpath = "//section[4]/a[@href='/search']")
+    private WebElement searchBtn;
+
+    @FindBy(xpath = "//section[5]/a[@data-component='Item']")
+    private WebElement  preferencesBtn;
+
+    @FindBy(xpath = "//section[6]/a[@href='/']")
+    private WebElement productInfo;
+
+
 
     public AllContent clickOnAllContent(){
         clickOnWebElement(allContent);

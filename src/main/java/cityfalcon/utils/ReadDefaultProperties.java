@@ -10,59 +10,18 @@ import java.util.Properties;
 
 public class ReadDefaultProperties {
 
-//    protected static Properties props;
-//    private static InputStream input;
-//
-//
-//    private static  String propertiesPath = "propertyfiles/default.properties";
-//    //src/test/resources/propertyfiles/
-//
-//    static{
-//
-//        props = readPropertiesFiles();
-//
-//
-//
-//    }
-//    public static String getPropertyValue(String key){
-//       return props.getProperty(key);
-//    }
-//
-//    private static  Properties  readPropertiesFiles(){
-//   props = new Properties();
-//     // input = ReadDefaultProperties.class.getClassLoader().getResourceAsStream(propertiesPath);
-//     //   BufferedReader reader;
-//
-//
-//        try {
-//            //new FileInputStream(propertiesPath);
-//
-//
-//
-//
-//
-//
-//          input = ResourceLoader.getResource();
-//
-//            props.load(input);
-//        }catch(Exception e){
-//            throw new RuntimeException("The properties path was not found");
-//        }
-//        System.out.println(props.getProperty("url"));
-//        return props;
-//    }
+
 private static Properties properties;
     private static Map<String, String> configParam = new HashMap<>();
-
-    private static String configPath = "/home/ibrahim/workspace/ReactDesktopWebApp/target/docker-resources/propertyfiles/default.properties";
-
-   // private  String config = getClass().getClassLoader().getResourcesAsStream(configPath);
 
 
     static{
 
+
             try {
                 properties = readProperties();
+
+
 
 
                 for (Map.Entry prop : properties.entrySet()) {
@@ -76,14 +35,13 @@ private static Properties properties;
 
 
             } catch (Exception e) {
-                throw new RuntimeException("The file is not found");
+               throw new RuntimeException("The properties were not initialized ");
 
             }
 
     }
 
-//    public ReadDefaultProperties() throws IOException {
-//    }
+
 
 
     public static String getPropertyValue(String key){
@@ -99,12 +57,15 @@ private static Properties properties;
     }
     private static Properties readProperties()  {
         Properties properties = new Properties();
+        InputStream input;
 
 
-        try (InputStream input = new FileInputStream(configPath)){
+      //  try (InputStream input = new FileInputStream(configPath)){
+        try{
+           input  = ResourceLoader.getResource();
             properties.load(input);
         }catch(Exception e){
-            throw new RuntimeException("Unable to read the property file " + configPath );
+            throw new RuntimeException("Unable to read the property file " );
             //  log.error("Unable to read the property file {}", DEFAULT_PROPERTIES, e);
         }
         return properties;

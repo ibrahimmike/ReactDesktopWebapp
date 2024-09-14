@@ -11,21 +11,6 @@ import org.openqa.selenium.WebDriver;
 public class AssignWebDriver {
 
     public static WebDriver getWebDriver(){
-//        if (browser.equalsIgnoreCase("chrome")){
-//            DriverManager.setDrivers(Chrome.createChromeDriver());
-//        } else if (browser.equalsIgnoreCase("edge")) {
-//            DriverManager.setDrivers(Edge.createEdgeDriver());
-//
-//        } else if (browser.equalsIgnoreCase("firefox")) {
-//            DriverManager.setDrivers(Firefox.createFirefoxDriver());
-//        } else if (browser.equalsIgnoreCase("safari")){
-//            DriverManager.setDrivers(Safari.createSafariDriver());
-//        }
-
-
-
-
-
 
         if (ReadDefaultProperties.getPropertyValue("browser").equalsIgnoreCase("chrome")){
             DriverManager.setDrivers(Chrome.createChromeDriver());

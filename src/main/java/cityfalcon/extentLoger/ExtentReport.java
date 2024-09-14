@@ -49,7 +49,7 @@ public class ExtentReport{
     private static String getReportsPath(){
         if (ReadDefaultProperties.getPropertyValue("overrideReports").equalsIgnoreCase("no")){
             date = new Date();
-            return "test-output/" + date.toString()+".html";
+            return "extent-reports/" + date.toString()+".html";
         }
         return "test-output/";
     }

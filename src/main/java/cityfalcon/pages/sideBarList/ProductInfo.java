@@ -2,23 +2,38 @@ package cityfalcon.pages.sideBarList;
 
 import cityfalcon.pages.BasePage;
 import cityfalcon.pages.features.AllFeaturesPage;
+import freemarker.template.Template;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ProductInfo extends BasePage {
 
-        public ProductInfo(WebDriver driver) {
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'Consumer Products']" )
+        private  WebElement consumerProduct;
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'Consumer Audiences']")
+        private WebElement consumerAudiences;
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'Enterprise Solutions']")
+        private WebElement enterpriseSolutions;
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'Enterprise Audiences']")
+        private WebElement enterpriseAudience;
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'All Features and Content']")
+        private WebElement  allFeaturesContent;
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'Features']")
+        private WebElement features;
+        @FindBy(xpath = "//section[6]/ul/li//div[text() = 'Content']")
+        private WebElement content;
+
+
+    public ProductInfo(WebDriver driver) {
             super(driver);
         }
 
-        private final WebElement consumerProduct = driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'Consumer Products']"));
-        private final WebElement consumerAudiences =  driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'Consumer Audiences']"));
-        private final WebElement enterpriseSolutions = driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'Enterprise Solutions']"));
-        private final WebElement enterpriseAudience = driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'Enterprise Audiences']"));
-        private final WebElement allFeaturesContent = driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'All Features and Content']"));
-        private final WebElement features = driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'Features']"));
-        private final WebElement content = driver.findElement(By.xpath("//section[6]/ul/li//div[text() = 'Content']"));
+
+
+
+
 
         public ConsumerProduct clickOnConsumerProduct(){
             clickOnWebElement(consumerProduct);

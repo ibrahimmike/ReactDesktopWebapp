@@ -1,7 +1,7 @@
 package cityfalcon.DriverFactory.browsers;
 
 import cityfalcon.utils.ReadDefaultProperties;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;

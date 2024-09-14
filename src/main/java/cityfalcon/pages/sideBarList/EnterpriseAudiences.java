@@ -5,21 +5,28 @@ import cityfalcon.pages.segments.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class EnterpriseAudiences extends BasePage {
+
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/brokers']")
+    private WebElement brokers;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/academia']")
+    private WebElement academia;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/wealth-managers-advisors']")
+    private WebElement wealthManagers;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/private-equity']")
+    private WebElement p2pCrowdFunding;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/institutional']")
+    private WebElement institutionalInvestors;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/consultancy-legal-accounting']")
+    private WebElement consultancyAndLegalAccounting;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/segments/central-banks-regulatory']")
+    private WebElement centralBanksRegulatory;
+
     public EnterpriseAudiences(WebDriver driver) {
         super(driver);
     }
-
-    private final WebElement brokers = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/brokers']"));
-    private final WebElement academia = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/academia']"));
-    private final WebElement wealthManagers = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/wealth-managers-advisors']"));
-
-    private final WebElement p2pCrowdFunding = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/private-equity']"));
-    private final WebElement institutionalInvestors = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/institutional']"));
-
-    private final WebElement consultancyAndLegalAccounting = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/consultancy-legal-accounting']"));
-    private final WebElement centralBanksRegulatory = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/segments/central-banks-regulatory']"));
 
 
     public SegmentsBrokersPage clickOnBrokersBtn(){

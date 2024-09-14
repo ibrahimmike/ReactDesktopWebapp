@@ -1,32 +1,62 @@
 package cityfalcon.pages.sideBarList;
 
 import cityfalcon.pages.*;
+import cityfalcon.pages.AlternativeDataPages.AlternativeDataPage;
+import cityfalcon.pages.investorRelationsPages.InvestorRelationsPage;
+import cityfalcon.pages.sectorsPages.SectorsPage;
+import cityfalcon.pages.topicsAndDirectoryPages.TopicsDirectoryPage;
+import cityfalcon.pages.esgPages.EsgPage;
 import cityfalcon.pages.filingsPages.CompanyFilingsPage;
 import cityfalcon.pages.filingsPages.InsiderTransactionsPage;
+import cityfalcon.pages.locationsPages.LocationsPage;
 import cityfalcon.pages.segments.SentimentAnalysis;
 import cityfalcon.pages.topicsAndAssetClassesPages.TopicsAndAssetsClassesMainPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class AllContent extends BasePage {
-        public AllContent(WebDriver driver) {
+
+      @FindBy(xpath = "//ul/li/a[@href='/news/directory']")
+      private WebElement topicsDirectory;
+      @FindBy(xpath = "//ul/li/a[@href='/news']")
+      private WebElement newsAndResearch;
+      @FindBy(xpath = "//ul/li/a[@href='/news/directory/premium-publications']")
+      private WebElement premiumPublications;
+
+      @FindBy(xpath = "//ul/li/a[@href='/news/directory/topic-class']")
+      private  WebElement topicsAndAssetsClasses;
+      @FindBy(xpath = "//ul/li/a[@href='/news/directory/dcsc-sectors']")
+      private WebElement sectors;
+      @FindBy(xpath = "//ul/li/a[@href='/news/directory/locations']")
+      private WebElement locations;
+      @FindBy(xpath = "//ul/li/a[@href='/news/directory/locations']")
+      private WebElement sentiment;
+      @FindBy(xpath = "//ul/li/a[@href='/directory/filings']")
+      private WebElement companyFilings;
+      @FindBy(xpath = "//ul/li/a[@href='/directory/investor-relations']")
+      private WebElement investorRelations;
+      @FindBy(xpath = "//ul/li/a[@href='/directory/insider-transactions']")
+      private WebElement insiderTransactions;
+      @FindBy(xpath = "//ul/li/a[@href='/directory/esg']")
+      private WebElement esg;
+      @FindBy(xpath = "//ul/li/a[@href='/directory/alternative-data']")
+      private WebElement alternativeData;
+      @FindBy(xpath = "//ul/li/a[@href='/directory/companies-insights/uk']")
+      private WebElement privateCompaniesIn;
+
+
+
+
+
+    public AllContent(WebDriver driver) {
             super(driver);
         }
-        //   private WebElement personalisedContentWatchList = driver.findElement(By.xpath("//ul/li/a[@href='/watchlists']"));
-        private final WebElement topicsDirectory = driver.findElement(By.xpath("//ul/li/a[@href='/news/directory']"));
-        private final WebElement newsAndResearch = driver.findElement(By.xpath("//ul/li/a[@href='/news']"));
-        private final WebElement premiumPublications = driver.findElement(By.xpath("//ul/li/a[@href='/news/directory/premium-publications']"));
-        private final WebElement topicsAndAssetsClasses = driver.findElement(By.xpath("//ul/li/a[@href='/news/directory/topic-class']"));
-        private final WebElement sectors = driver.findElement(By.xpath("//ul/li/a[@href='/news/directory/dcsc-sectors']"));
-        private final WebElement locations = driver.findElement(By.xpath("//ul/li/a[@href='/news/directory/locations']"));
-        private final WebElement sentiment = driver.findElement(By.xpath("//ul/li/a[@href='/news/directory/locations']"));
-        private final WebElement companyFilings = driver.findElement(By.xpath("//ul/li/a[@href='/directory/filings']"));
-        private final WebElement investorRelations = driver.findElement(By.xpath("//ul/li/a[@href='/directory/investor-relations']"));
-        private final WebElement insiderTransactions =   driver.findElement(By.xpath("//ul/li/a[@href='/directory/insider-transactions']"));
-        private final  WebElement esg = driver.findElement(By.xpath("//ul/li/a[@href='/directory/esg']"));
-        private final WebElement alternativeData = driver.findElement(By.xpath("//ul/li/a[@href='/directory/alternative-data']"));
-        private final WebElement privateCompaniesIn = driver.findElement(By.xpath("//ul/li/a[@href='/directory/companies-insights/uk']"));
+
+
+
+
+
         public TopicsDirectoryPage clickOnTopicsDirectory(){
             clickOnWebElement(topicsDirectory);
             return new TopicsDirectoryPage(driver);

@@ -26,6 +26,9 @@ public class GainersAndLosers extends BasePage {
     private WebElement scrollingToElement;
     @FindBy(xpath = "//div[text()='Gainers']")
     private WebElement gainersSectionTitle;
+    @FindBy(xpath = "//div[contains(@class, 'module__name___')]//a")
+    private List<WebElement> gainersAndLosersAssetList;
+    //[text()='Bitcoin']
 
 
     public GainersAndLosers(WebDriver driver) {
@@ -56,38 +59,48 @@ public class GainersAndLosers extends BasePage {
     }
     public GainersAndLosers stocksAndCryptosFunctionalities(){
         wait.until(ExpectedConditions.visibilityOfAllElements(gainersSectionTitle));
-//        scrollToView(driver.findElement(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
-//                "//ancestor::div[contains(@class,'__section-wrapper-header___')]")));
         scrollUpToElement(gainersSectionTitle);
         waitForTime();
         scrollActions(gainersSectionTitle,-120);
 
 
-//        List<WebElement> filtersBtns = driver.findElements(By.xpath("//div[contains(@class,'__section-wrapper-header-title___')and(text()='GAINERS AND LOSERS')]" +
-//                "//ancestor::div[contains(@class,'__section-wrapper-container___')]//div[@class='menu-wrapper']//button"));
-
-
-
-
-            Map<String, WebElement> buttons = new HashMap<>();
-            for (WebElement e : gainersAndLosersFiltersBtn) {
-                buttons.put(e.getText(), e);
-            }
-            waitForTime();
-
-
-            clickOnWebElement(buttons.get("Crypto"));
-            waitForTime();
-            clickOnWebElement(buttons.get("Nano Cap"));
-            waitForTime();
-//            ExtentLogger.log("The user was able to click on crypto and to click on Mega Cap");
-//
-//            ExtentLogger.fail("The filters for the stocks and cap sizes did not update" );
-
-          //  throw new RuntimeException("The elements are not visible : "+ );
-
-
 
         return this;
     }
+
+    public GainersAndLosers clickOnButton(String button ){
+        stocksAndCryptosFunctionalities();
+
+        Map<String, WebElement> buttons = new HashMap<>();
+        for (WebElement e : gainersAndLosersFiltersBtn) {
+            buttons.put(e.getText(), e);
+        }
+        clickOnWebElement(buttons.get(button));
+
+
+        return new GainersAndLosers(driver);
+
+    }
+    public boolean verifyThatElementAssetListsHasUpdatedTo(String assetValue){
+        boolean check = false;
+        Map<String, WebElement> assetList = new HashMap<>();
+        for(WebElement e : gainersAndLosersAssetList){
+            assetList.put(e.getText(), e);
+
+        }
+        System.out.println("Values of the assets list : " + assetList.keySet());
+        if (assetList.containsKey(assetValue)){
+            ExtentLogger.log("The asset lists values are updated");
+            check = true;
+        }else{
+            ExtentLogger.fail("The asset lists values are not updated");
+            check = false;
+        }
+
+
+
+        return check;
+    }
+
+
 }

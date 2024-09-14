@@ -18,12 +18,9 @@ public class LocationSearchOnHomePage extends HomePage{
     @FindBy(xpath = "//div[contains(@class, '__language-filter-wrapper__')]//button[@id='source-dropdown-button']")
     private WebElement languageBtn;
     @FindBy(xpath = "//div[contains(@class, '__location-filter-item__')]//span")
-    private List<WebElement>firstLayerList;
+    private List<WebElement> firstLayerList;
 
-   // private final WebElement locationFilterHeader = driver.findElement(By.xpath("//div[@class='location-filter-sub-header']"));
 
-//    private final WebElement languageBtn = driver.
-//            findElement(By.xpath("//div[contains(@class, '__language-filter-wrapper__')]//button[@id='source-dropdown-button']"));
 
     public LocationSearchOnHomePage(WebDriver driver) {
         super(driver);

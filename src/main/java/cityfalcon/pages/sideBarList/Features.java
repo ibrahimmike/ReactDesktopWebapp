@@ -7,16 +7,29 @@ import cityfalcon.pages.features.FeaturesWatchListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class Features extends BasePage {
-    private final WebElement cityFalconScore = driver.findElement(By.xpath("//section[6]//ul/li//div[text()='CityFALCON Score']"));
-    private final WebElement watchLists = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/features/watchlists']"));
-    private final WebElement similarity = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/features/similarity']"));
 
-    private final WebElement newsAndCharts = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/features/news-on-charts']"));
-    private final WebElement keyHeadLine = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/features/summarisation']"));
-    private final WebElement sentiment = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/features/sentiment']"));
-    private final WebElement contentTranslation = driver.findElement(By.xpath("//section[6]//ul/li//a[@href='/features/translation']"));
+    @FindBy(xpath = "//section[6]//ul/li//div[text()='CityFALCON Score']")
+    private WebElement cityFalconScore;
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/features/watchlists']")
+    private WebElement watchLists;
+
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/features/similarity']")
+    private WebElement similarity;
+
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/features/news-on-charts']")
+    private WebElement newsAndCharts;
+
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/features/summarisation']")
+    private WebElement keyHeadLine;
+
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/features/sentiment']")
+    private WebElement sentiment;
+
+    @FindBy(xpath = "//section[6]//ul/li//a[@href='/features/translation']")
+    private WebElement contentTranslation;
 
     public Features(WebDriver driver) {
         super(driver);
