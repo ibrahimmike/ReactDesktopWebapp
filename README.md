@@ -4,7 +4,7 @@
 <h3>Hello and welcome to My project. :wave: </h3> 
 
 
-This is a simple test automation framework using selenium Java, in order to automate and test frontend user stories and functionality.
+This is a simple test automation framework using selenium Java, in order to automate and test frontend user stories and functionality. This is a maven project and should be able to run on any machine having Java 17+ and maven.
 
 The libs used to create this framework are:
 - Web driver Manager
@@ -36,3 +36,5 @@ mvn clean install
 ``` java
 mvn tests
 ```
+
+<h3>Important notice : that is a work in process still, so it should be continued<h3>
