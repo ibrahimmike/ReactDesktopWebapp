@@ -30,3 +30,7 @@ How to run pull the code and run in the terminal
 ```java 
 mvn clean install
  ```
+<h5> then  Run </h5>
+```java
+mvn test
+```
