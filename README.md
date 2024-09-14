@@ -9,7 +9,7 @@ This is a simple test automation framework using selenium Java, in order to auto
 The libs used to create this framework are:
 - Web driver Manager
 - Selenium
-- Extent report in order to create reports and leverage the reporting logs in order to achieve the best of coverage in each and every test.
+- Extent report.
 - Page factory
 
 Main challenges of automating a React app, and how to fix them
