@@ -40,7 +40,7 @@ cd target/docker-resources
 
 
 ``` java
-java -cp 'libs/*' org.testng.TestNG 
+java -cp 'libs/*' org.testng.TestNG testSuites/RegreesionTests.xml
 ```
 
 <h3>Important notice : that is a work in progress still, so it should be continued<h3>
