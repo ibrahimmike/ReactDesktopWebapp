@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="cityfalcon" thread-count="4" parallel="none" verbose="10"  >
-<!--    <listeners>-->
-<!--        <listener class-name="listeners.Listener"/>-->
-<!--    </listeners>-->
+    <listeners>
+        <listener class-name="listeners.Listener"/>
+    </listeners>
 
     <test name="Login and logout" >
         <classes>

@@ -27,14 +27,20 @@ How to fix:
 
 
 How to run pull the code and run in the terminal 
-```java 
+``` java 
 mvn clean install
  ```
-<h5> then  Run </h5>
+<h5> then  Run </h5>\
+
+``` Bash
+cd target/docker-resources
+```
+
+
 
 
 ``` java
-mvn tests
+java -cp 'libs/*' org.testng.TestNG 
 ```
 
 <h3>Important notice : that is a work in progress still, so it should be continued<h3>

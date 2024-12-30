@@ -39,6 +39,7 @@ public class Chrome {
         } else {
             ChromeOptions options = new ChromeOptions();
 //            options.setBinary("/opt/google/chrome/chrome");
+              options.setBinary("/usr/bin/google-chrome");
             options.addArguments("--disable-notifications");
             options.addArguments("--start-maximized");
           //  options.addArguments("--disable-features=EnableEphemeralFlashPermission");
@@ -47,12 +48,14 @@ public class Chrome {
             options.addArguments("--disable-dev-shm-usage");
             //disable-dev-shm-usage
             options.addArguments("--disable-extensions");
+          //  options.addArguments("--headless");
           //  options.addArguments("--disable-gpu");
 
             System.out.println("I am inside the local WebDriver options ");
 
             WebDriverManager.chromedriver().clearDriverCache().setup();
             WebDriverManager.chromedriver().clearResolutionCache().setup();
+
             return  new ChromeDriver(options);
         }
 
