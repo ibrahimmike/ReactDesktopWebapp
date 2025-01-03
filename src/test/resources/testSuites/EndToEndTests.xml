@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="cityfalcon" thread-count="4" parallel="tests" verbose="10"  >
-    <listeners>
-        <listener class-name="listeners.Listener"/>
-    </listeners>
+<suite name="EndToEndTests" thread-count="4" parallel="tests" verbose="10"  >
+        <listeners>
+            <listener class-name="listeners.Listener"/>
+        </listeners>
 
-    <test name="Guest user" >
+    <test name="Guest user Tests experience on the content" >
         <classes>
             <class name="tests.GuestUserCheckingContent"/>
         </classes>
     </test>
-    <test name="GuestUserOnBoarding">
+    <test name="Guest User onboarding process">
         <classes>
             <class name="tests.GuestUserOnBoarding"/>
         </classes>
@@ -19,7 +19,6 @@
         <classes>
             <class name="tests.GuestUserHomePageSideBarTest"/>
         </classes>
-
     </test>
 
 </suite>

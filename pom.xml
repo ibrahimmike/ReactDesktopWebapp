@@ -7,7 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>ReactDesktopWebApp</artifactId>
     <version>1.0-SNAPSHOT</version>
-<!--    <maven.compiler.version>3.12.1</maven.compiler.version>-->
+
 
 
     <properties>
@@ -38,14 +38,6 @@
             <version>${org.selenium.version}</version>
         </dependency>
 
-
-<!--        <dependency>-->
-<!--            <groupId>org.seleniumhq.selenium</groupId>-->
-<!--            <artifactId>selenium-server</artifactId>-->
-<!--            <version>3.141.59</version>-->
-<!--        </dependency>-->
-
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -54,7 +46,7 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
@@ -64,9 +56,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-<!--         <version>${org.webdriverManager.version}</version>-->
-            <version>5.9.2</version>
-<!--            <scope>test</scope>-->
+           <version> ${org.webdriverManager.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -80,34 +70,20 @@
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
         </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>5.9.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-simple</artifactId>-->
-<!--            <version>1.7.5</version>-->
-<!--        </dependency>-->
+
+
 
 
     </dependencies>
     <build>
         <finalName>CityFalcon</finalName>
-
-
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
 
                 <version>${maven.compiler.version}</version>
-<!--                <configuration>-->
-<!--                    <release>17</release>-->
-<!--                </configuration>-->
+
                 <configuration>
                     <release>17</release>
                 </configuration>
@@ -116,20 +92,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
-<!--                <goals>-->
-<!--                    <goal>test</goal>-->
-<!--                </goals>-->
                 <configuration>
-<!--                    <forkedProcessExitTimeoutInSeconds>120</forkedProcessExitTimeoutInSeconds>-->
-<!--                    <includes>-->
-<!--                        <include>**/Test*.java</include>-->
-<!--                        <include>**/*Test.java</include>-->
-<!--                    </includes>-->
                     <dependenciesToScan>
                         <dependency>com.aventstack</dependency>
-<!--                        <dependency>org.testng</dependency>-->
-<!--                        <dependency>io.github.bonigarcia</dependency>-->
-
                     </dependenciesToScan>
                     <properties>
                         <excludeTags>slow</excludeTags>
@@ -137,12 +102,6 @@
                             <name>usedefaultlisteners</name>
                             <value>false</value> <!-- disabling default listeners is optional -->
                         </property>
-
-<!--                        <property>-->
-<!--                            <name>reporter</name>-->
-<!--                            <value>reports</value>-->
-<!--                        </property>-->
-
                     </properties>
                     <systemPropertyVariables>
                         <browser>chrome</browser>
@@ -150,14 +109,10 @@
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <file>src/test/resources/testSuites/TestNg.xml</file>
-<!--                        <file>src/test/resources/testSuites/GuestUserTests.xml</file>-->
                     </suiteXmlFiles>
-<!--                    <argLine>-javaagent:${io.github.bonigarcia:webdrivermanager:jar}</argLine>-->
-
                     <parallel>none</parallel>
                     <threadCount>4</threadCount>
-                    <reportsDirectory>target/test-output</reportsDirectory>
-
+                    <reportsDirectory>${package.directory}/extent-report</reportsDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -171,11 +126,7 @@
                         <goals>
                             <goal>copy-dependencies</goal>
                             <goal>properties</goal>
-
                         </goals>
-
-
-
                         <configuration>
                             <outputDirectory>
                                 ${package.directory}/libs
@@ -206,15 +157,6 @@
                         <resource>
                             <directory>src/test/resources</directory>
                         </resource>
-
-                        <resource>
-                            <directory>src/main/resources</directory>
-                        </resource>
-<!--                        <resource>-->
-<!--                            <directory>src/main/java/cityfalcon</directory>-->
-<!--                        </resource>-->
-
-
                     </resources>
                 </configuration>
             </plugin>
@@ -235,21 +177,15 @@
                         </configuration>
                     </execution>
                 </executions>
-
             </plugin>
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
                     <classesDirectory>${project.build.directory}</classesDirectory>
-
                 </configuration>
-
                 <executions>
-
                     <execution>
                         <goals>
                             <goal>integration-test</goal>
@@ -258,18 +194,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                    <version>3.7.0</version>-->
-<!--                    <configuration>-->
-<!--                        <source>1.8</source>-->
-<!--                        <target>1.8</target>-->
-<!--                        <encoding>UTF-8</encoding>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
             </plugins>
 
     </build>

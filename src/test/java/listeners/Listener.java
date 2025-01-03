@@ -51,7 +51,7 @@ public class Listener implements ITestListener, ISuiteListener {
 //        String htmlImageFormat = "<img width= 700px"
 
 
-        ExtentLogger.fail(result.getMethod().getMethodName() + " test thrown error:  " + result.getThrowable());
+        ExtentLogger.fail(result.getMethod().getMethodName() + " test thrown error:  " +  result.getThrowable().getMessage());
 
       //  ;
 

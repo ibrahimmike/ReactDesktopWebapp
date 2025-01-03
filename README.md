@@ -28,7 +28,7 @@ How to fix:
 
 How to run pull the code and run in the terminal 
 ``` java 
-mvn clean install
+mvn clean package -DskipTests
  ```
 <h5> then  Run </h5>\
 

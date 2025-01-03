@@ -1,11 +1,10 @@
 package tests;
 
-import cityfalcon.pages.homePage.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(listeners.Listener.class)
+//@Listeners(listeners.Listener.class)
 public class GuestUserCheckingContent extends BaseTest{
     @Test (priority = 1)
     public void guestUserHomePageSearchBarSearch(){
